@@ -8,6 +8,7 @@ pygame.mixer.init()
 pygame.mixer.music.load(file_main_music)
 pygame.mixer.music.play(-1)
 
+
 def main():
     run = True
     pause: bool = False

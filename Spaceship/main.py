@@ -67,12 +67,7 @@ class Ship:
         if keys[pygame.K_RIGHT]:
             if self.x < background.width - self.width:
                 self.x += self.speed
-        if keys[pygame.K_UP]:
-            if self.y > 0:
-                self.y -= self.speed
-        if keys[pygame.K_DOWN]:
-            if self.y < background.height - self.height:
-                self.y += self.speed
+  
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def draw(self):
@@ -115,7 +110,7 @@ class Fireball:
 def main():
     background = Background()
     ship = Ship()
-    running = False
+    running = True
     bombs = []
     enemies = []
     score = 0
@@ -128,7 +123,7 @@ def main():
     best = open('score.txt')
     best_score = best.read()
 
-    while not running:
+    while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 file = open('score.txt', 'w')
@@ -139,7 +134,7 @@ def main():
                 sys.exit().pygame.quit()
 
         clock += pygame.time.Clock().tick(FPS) / 1000
-        fireball = Fireball(ship.x + 40, ship.y)
+        fireball = Fireball(ship.x + 45, ship.y)
         score_label = my_font.render("Score: " + str(score), True, (255, 255, 0))
         lives_label = my_font.render("Lives: " + str(lives), True, (255, 255, 0))
         level_label = my_font.render("Level: " + str(level), True, (255, 255, 0))
@@ -170,8 +165,9 @@ def main():
             bomb.draw() 
             bomb.y -= bomb_speed
 
-            if bomb.y <= 5:
-                bombs.remove(bomb)
+            for enemy in enemies:
+                if enemy.hitbox.colliderect(bomb.hitbox):
+                    bombs.clear()
 
             for enemy in enemies:
                 if enemy.hitbox.colliderect(bomb.hitbox):
