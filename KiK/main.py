@@ -11,7 +11,7 @@ button_font = tkFont.Font(family='Arial Bold', size=8, weight=tkFont.BOLD)
 color = "#380A2E"
 color_2 = '#8a2be2'
 scores = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
-
+click_counter = 0
 
 
 def interface():
@@ -38,7 +38,7 @@ def draw_symbol():
 	return symbol
 
 def mark():
-	click_counter = 0
+	global click_counter
 	if click_counter == 0:
 		print(draw_symbol())
 		click_counter +=1
@@ -49,14 +49,13 @@ def mark():
 			print("0")
 		else:
 			click_counter +=1
-			print("X")
+			print("x")
 
 def logic():
 	pass
 
 def main():
 	interface()
-	print(draw_symbol())
 	mainloop()
 
 
