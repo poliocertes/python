@@ -183,7 +183,7 @@ def main():
                             draw_time_difference = draw_time_difference
                         break
 
-        for enemy in enemies:
+        for enemy in enemies: 
             enemy.draw()
             enemy.y += enemy_speed
             if enemy.y > background.height - 10:
