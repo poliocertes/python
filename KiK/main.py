@@ -37,8 +37,12 @@ def draw_symbol():
 		symbol = 0
 	return symbol
 
-def mark():
-	pass
+# def mark():
+# 	if click_counter == 0:
+# 		pass
+# 	else:
+# 		click_counter%2==0:
+# 		pass
 
 def logic():
 	pass
