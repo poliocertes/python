@@ -11,21 +11,21 @@ button_font = tkFont.Font(family='Arial Bold', size=8, weight=tkFont.BOLD)
 color = "#380A2E"
 color_2 = '#8a2be2'
 scores = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
-click_counter = 0
+
 
 
 def interface():
 	buttons_area.pack(side=TOP, expand=False, fill=BOTH)
 	grid = Frame(buttons_area, background="red")
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command ="").grid(row="1", column="1", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command ="").grid(row="1", column="2", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="1", column="3", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="2", column="1", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="2", column="2", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="2", column="3", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="3", column="1", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="3", column="2", padx=1, pady=1)
-	Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command="").grid(row="3", column="3", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="1", column="1", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="1", column="2", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="1", column="3", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="2", column="1", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="2", column="2", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="2", column="3", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="3", column="1", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="3", column="2", padx=1, pady=1)
+	button = Button(grid, text="", height= 15, width=30, bg=color, activebackground=color_2, fg='white', font=button_font, command=mark).grid(row="3", column="3", padx=1, pady=1)
 	grid.pack()
 
 
@@ -37,12 +37,19 @@ def draw_symbol():
 		symbol = 0
 	return symbol
 
-# def mark():
-# 	if click_counter == 0:
-# 		pass
-# 	else:
-# 		click_counter%2==0:
-# 		pass
+def mark():
+	click_counter = 0
+	if click_counter == 0:
+		print(draw_symbol())
+		click_counter +=1
+		
+	else:
+		if click_counter%2==0:
+			click_counter +=1
+			print("0")
+		else:
+			click_counter +=1
+			print("X")
 
 def logic():
 	pass
