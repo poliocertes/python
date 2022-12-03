@@ -157,9 +157,9 @@ def main():
             clock = 0
             enemies.append(enemy)
 
-        if keys[pygame.K_SPACE]: 
+        if keys[pygame.K_SPACE]:
             bombs.append(fireball)
-            # print(len(bombs))
+            a = len(bombs)
 
         for bomb in bombs:
             bomb.draw()
@@ -167,7 +167,7 @@ def main():
 
             for enemy in enemies:
                 if enemy.hitbox.colliderect(bomb.hitbox):
-                    del bombs[0:20]
+                    del bombs[-a:]
 
             for enemy in enemies:
                 if enemy.hitbox.colliderect(bomb.hitbox):
