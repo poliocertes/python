@@ -132,7 +132,6 @@ def main():
                 else:
                     pass 
                 sys.exit().pygame.quit()
-
         clock += pygame.time.Clock().tick(FPS) / 1000
         fireball = Fireball(ship.x + 45, ship.y)
         score_label = my_font.render("Score: " + str(score), True, (255, 255, 0))
@@ -160,14 +159,15 @@ def main():
 
         if keys[pygame.K_SPACE]: 
             bombs.append(fireball)
+            # print(len(bombs))
 
         for bomb in bombs:
-            bomb.draw() 
+            bomb.draw()
             bomb.y -= bomb_speed
 
             for enemy in enemies:
                 if enemy.hitbox.colliderect(bomb.hitbox):
-                    bombs.clear()
+                    del bombs[0:20]
 
             for enemy in enemies:
                 if enemy.hitbox.colliderect(bomb.hitbox):
@@ -176,12 +176,15 @@ def main():
                     if score > 0 and score % 5 == 0:
                         level += 1
                         enemy_speed += 0.2
-                        bomb_speed += 0.3 
+                        bomb_speed += 0.3
                         if draw_time_difference > 0.3:
                             draw_time_difference -= 0.1
                         else:
                             draw_time_difference = draw_time_difference
                         break
+
+            if bomb.y <= bomb.height:
+                bombs.remove(bomb)
 
         for enemy in enemies: 
             enemy.draw()
