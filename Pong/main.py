@@ -27,8 +27,7 @@ keys = pygame.key.get_pressed()
 
 class Paddle_one:
 	COLOR = GREEN
-	VEL = 6
-
+	PADDLE1_VEL = 6
 	def __init__(self, x, y, width, height):
 		self.x_cord = x
 		self.y_cord = y
@@ -41,17 +40,16 @@ class Paddle_one:
 
 	def move_up(self):
 		if self.y_cord > 10:
-			self.y_cord -= self.VEL
+			self.y_cord -= self.PADDLE1_VEL
 
 	def move_down(self):
 		if self.y_cord + self.height < HEIGHT - 10:
-			self.y_cord += self.VEL
+			self.y_cord += self.PADDLE1_VEL
 
 
 class Paddle_two:
 	COLOR = RED
-	VEL = 6
-
+	PADDLE2_VEL = 6
 	def __init__(self, x, y, width, height):
 		self.x_cord = x
 		self.y_cord = y
@@ -64,17 +62,16 @@ class Paddle_two:
 
 	def move_up(self):
 		if self.y_cord > 10:
-			self.y_cord -= self.VEL
+			self.y_cord -= self.PADDLE2_VEL
 
 	def move_down(self):
 		if self.y_cord + self.height < HEIGHT - 10:
-			self.y_cord += self.VEL
+			self.y_cord += self.PADDLE2_VEL
 
 
 class Game_ball:
-	BALL_VEL = 5
 	COLOR = YELLOW
-
+	BALL_VEL = 5
 	def __init__(self, x, y, radius):
 		self.x_cord = self.start_x = x
 		self.y_cord = self.start_y = y
