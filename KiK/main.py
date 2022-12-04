@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import font as tkFont
 import random
 
-color="blue"
+color="green"
 width = 670
 height = 670
 window_size = str(width)+'x'+str(height)
@@ -17,6 +17,7 @@ class Game:
 
 	def board(self):
 		button_font = tkFont.Font(family='Arial Bold', size=8, weight=tkFont.BOLD)
+		grid = Frame(buttons_area, background="#0066CC")
 		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="1", padx=10, pady=10)
 		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="2", padx=10, pady=10)
 		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="3", padx=10, pady=10)
@@ -26,18 +27,21 @@ class Game:
 		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="1", padx=10, pady=10)
 		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="2", padx=10, pady=10)
 		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="3", padx=10, pady=10)
+		grid.pack()
 		
 
-	def  interface(self):
+	def interface(self):
 		window = Tk()
 		window.title("Kółko i krzyżyk")
 		window.geometry(window_size)
 		window.configure(bg=self.color)
 		window.resizable(False, False)
+		button_area = Frame(window)
 		mainloop()
 
 	def choose_first_symbol(self):
-		return random.randint(0, 1)
+		choice =  random.randint(0, 1)
+		return choice
 
 	def mark_button(self):
 		pass
@@ -51,6 +55,7 @@ class Game:
 def main():
 	game = Game()
 	game.interface()
+	game.board
 
 if __name__ =="__main__":
 	main()
