@@ -2,27 +2,40 @@ from tkinter import *
 from tkinter import font as tkFont
 import random
 
-color="cyan"
+color="blue"
 width = 670
 height = 670
-x_dis = 300
-y_dis = 300
-window_location = str(width)+'x'+str(height)+'+'+str(x_dis)+'+'+str(y_dis)
+window_size = str(width)+'x'+str(height)
 results_table = [['','',''],['','',''],['','','']]
 
-def  interface():
-	window = Tk()
-	window.title("Kółko i krzyżyk")
-	window.geometry(window_location)
-	window.configure(bg=color)
-	window.resizable(False, False)
+class Game:
 
-def choose_symbol():
-	return random.randint(0, 1)
+	def __init__(self):
+		self.width = width
+		self.height = height
+		self.color = color
+
+	def  interface(self):
+		window = Tk()
+		window.title("Kółko i krzyżyk")
+		window.geometry(window_size)
+		window.configure(bg=color)
+		window.resizable(False, False)
+		mainloop()
+
+	def choose_first_symbol(self):
+		return random.randint(0, 1)
+
+	def mark_button():
+		pass
+
+	def check_results():
+		pass
 
 def main():
-	interface()
-	mainloop()
+	runnig = True
+	game = Game()
+	game.interface()
 
 if __name__ =="__main__":
 	main()
