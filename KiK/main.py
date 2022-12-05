@@ -1,12 +1,13 @@
 from tkinter import *
-from tkinter import font as tkFont
+from tkinter import font as tkfont
 import random
 
-color="green"
+color = "green"
 width = 670
 height = 670
-window_size = str(width)+'x'+str(height)
-res_table = [['','',''],['','',''],['','','']]
+window_size = str(width) + 'x' + str(height)
+res_table = [['', '', ''], ['', '', ''], ['', '', '']]
+
 
 class Game:
 
@@ -16,46 +17,28 @@ class Game:
 		self.color = color
 
 	def board(self):
-		button_font = tkFont.Font(family='Arial Bold', size=8, weight=tkFont.BOLD)
-		grid = Frame(buttons_area, background="#0066CC")
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="1", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="2", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="3", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="1", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="2", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="3", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="1", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="2", padx=10, pady=10)
-		Button(grid, text="", height= 5, width=10, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="3", padx=10, pady=10)
-		grid.pack()
-		
-
-	def interface(self):
 		window = Tk()
 		window.title("Kółko i krzyżyk")
 		window.geometry(window_size)
-		window.configure(bg=self.color)
+		window.configure(bg=color)
 		window.resizable(False, False)
-		button_area = Frame(window)
-		mainloop()
+		button_font = tkfont.Font(family='Arial Bold', size=8, weight=tkfont.BOLD)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="1", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="2", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="3", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="1", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="2", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="3", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="1", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="2", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="3", padx=1, pady=1)
 
-	def choose_first_symbol(self):
-		choice =  random.randint(0, 1)
-		return choice
-
-	def mark_button(self):
-		pass
-
-	def check_results(self):
-		if (res_table[0][0]==res_table[0][1]==res_table[0][2] or res_table[1][0]==res_table[1][1]==res_table[1][2] or res_table[2][0]==res_table[2][1]==res_table[2][2] or
-			res_table[0][0]==res_table[1][0]==res_table[2][0] or res_table[0][1]==res_table[1][1]==res_table[2][1] or res_table[0][2]==res_table[1][2]==res_table[2][2] or
-			res_table[0][0]==res_table[1][1]==res_table[2][2]or res_table[0][2]==res_table[1][1]==res_table[2][0]):
-			pass
 
 def main():
 	game = Game()
-	game.interface()
-	game.board
+	game.board()
+	mainloop()
 
-if __name__ =="__main__":
+
+if __name__ == "__main__":
 	main()
