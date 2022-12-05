@@ -16,12 +16,14 @@ class Game:
 		self.height = height
 		self.color = color
 
+	def mark_field(self):
+		if choosen_symbol == 0:
+			button.configure(text="0")
+			button["state"] = "disable"
+		print("W")
+
 	def choose_symbol(self):
 		choosen_symbol = random.randint(0, 1)
-		return choosen_symbol
-
-	def mark_field(self):
-		print("X")
 
 	def check_results(self):
 		pass
@@ -43,10 +45,12 @@ class Game:
 		button = Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command=self.mark_field).grid(row=2, column=1, padx=1, pady=1)
 		button = Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command=self.mark_field).grid(row=2, column=2, padx=1, pady=1)
 
-
 def main():
 	game = Game()
 	game.board()
+	game.choose_symbol()
+
+
 
 	mainloop()
 
