@@ -16,22 +16,29 @@ class Game:
 		self.height = height
 		self.color = color
 
-	def board(self):
+	@staticmethod
+	def board():
 		window = Tk()
 		window.title("Kółko i krzyżyk")
 		window.geometry(window_size)
 		window.configure(bg=color)
 		window.resizable(False, False)
 		button_font = tkfont.Font(family='Arial Bold', size=8, weight=tkfont.BOLD)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="1", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="2", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="1", column="3", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="1", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="2", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="2", column="3", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="1", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="2", padx=1, pady=1)
-		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row="3", column="3", padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=1, column=1, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=1, column=2, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=1, column=3, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=2, column=1, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=2, column=2, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=2, column=3, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=3, column=1, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=3, column=2, padx=1, pady=1)
+		Button(window, text="", height=15, width=30, bg='blue', activebackground='#0066CC', fg='white', font=button_font, command="").grid(row=3, column=3, padx=1, pady=1)
+
+	def choose_symbol():
+		pass
+
+	def check_results():
+		pass
 
 
 def main():
