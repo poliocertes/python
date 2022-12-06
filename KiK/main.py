@@ -21,7 +21,18 @@ class Game:
 		return choosen_symbol
 
 	def mark_field(self):
-		pass
+		va = self.choose_symbol()
+		global counter
+		if counter == 0:
+			if va == 0:
+				print("0")
+				counter += 1
+			elif va == 1:
+				print("X")
+				counter += 1
+		elif counter > 0:
+			counter += 1
+			print(counter)  # to działa
 
 	def check_results(self):
 		pass
@@ -47,8 +58,7 @@ def main():
 	game = Game()
 	game.board()
 	mainloop()
-	va = game.choose_symbol()
-	print(va)
+	
 
 
 if __name__ == "__main__":
