@@ -5,9 +5,9 @@ import random
 color = "green"
 width = 670
 height = 670
-window_size = str(width) + 'x' + str(height)
+window_size = str(width) + 'x' + str(height) + '+' + str(500) + '+' + str(500)
 res_table = [['', '', ''], ['', '', ''], ['', '', '']]
-
+counter = 0
 
 class Game:
 
@@ -16,14 +16,12 @@ class Game:
 		self.height = height
 		self.color = color
 
-	def mark_field(self):
-		if choosen_symbol == 0:
-			button.configure(text="0")
-			button["state"] = "disable"
-		print("W")
-
 	def choose_symbol(self):
 		choosen_symbol = random.randint(0, 1)
+		return choosen_symbol
+
+	def mark_field(self):
+		pass
 
 	def check_results(self):
 		pass
@@ -48,11 +46,9 @@ class Game:
 def main():
 	game = Game()
 	game.board()
-	game.choose_symbol()
-
-
-
 	mainloop()
+	va = game.choose_symbol()
+	print(va)
 
 
 if __name__ == "__main__":
