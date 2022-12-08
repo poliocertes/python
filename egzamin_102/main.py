@@ -3,7 +3,7 @@
 import sys
 
 
-class Room_one:
+class Room:
 	def __init__(self):
 		pass
 
@@ -19,21 +19,7 @@ class Room_one:
 	def describe_room(self):
 		pass
 
-
-class Room_two:
-	def __init__(self):
-		pass
-
-	def find_item(self):
-		pass
-
-	def take_item(self):
-		pass
-
-	def use_item(self):
-		pass
-
-	def describe_room(self):
+	def chech_room(self):
 		pass
 
 class Help:
