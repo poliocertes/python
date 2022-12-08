@@ -1,4 +1,5 @@
 import random
+import keyboard
 
 items = ['papier', 'kamien', 'nozyce']
 comp_choice = (random.choice(items))
@@ -45,11 +46,10 @@ while game:
 			print('Remis')
 
 	print('Chcesz dalej grac?')
-	print('1 -> TAK, 2 -> NIE:')
+	print('1 -> TAK, Kązdy inny klawisz: -> NIE:')
 	next_step = input("Moj wybor to: ")
-	if int(next_step) == 1:
+	if next_step == '1':
 		game = True
-	elif int(next_step) == 2:
-		quit()
 	else:
-		print("Podałes zly numer..")
+		quit()
+
