@@ -1,5 +1,5 @@
 import random
-import keyboard
+
 
 items = ['papier', 'kamien', 'nozyce']
 comp_choice = (random.choice(items))
@@ -51,5 +51,5 @@ while game:
 	if next_step == '1':
 		game = True
 	else:
-		quit()
+		game = False
 
