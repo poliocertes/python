@@ -1,13 +1,12 @@
 # egzamin_102
 
+items = []
+rooms = []
+
 import sys
 
-
-class Room:
+class Player:
 	def __init__(self):
-		pass
-
-	def find_item(self):
 		pass
 
 	def take_item(self):
@@ -16,11 +15,27 @@ class Room:
 	def use_item(self):
 		pass
 
+class Items:
+	def __init__(self):
+		self.name = name
+		self.function = function
+		self.quantity = quantity
+
+
+class Room:
+	def __init__(self):
+		pass
+
 	def describe_room(self):
 		pass
 
-	def chech_room(self):
+	def check_room(self):
 		pass
+
+	def item_list(self):
+		pass
+
+	def 
 
 class Help:
 	def __init__(self):
