@@ -15,12 +15,20 @@ class Player:
 	def use_item(self):
 		pass
 
+	def go_next(self):
+		pass
+
+	def go_previous(self):
+		pass
+
+	def where_am_i(self):
+		pass
+
 class Items:
 	def __init__(self):
 		self.name = name
 		self.function = function
 		self.quantity = quantity
-
 
 class Room:
 	def __init__(self):
