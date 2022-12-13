@@ -1,0 +1,11 @@
+Napisz prosta gre tekstowa. Wymysl prosta zagadke, zaprojektuj jedno, max dwa pomieszczenia, dodaj mozliwosc zdobywania i uzywania przedmiotow.
+Pozwol nam przezyc jakas mini przygode. 
+Obsluz komendy takie jak:
+
+uzyj przedmiot
+zabierz przedmiot
+przedmioty - wyswietl liste
+pomoc - wyswietl liste instrukcji
+opisz - opisuje aktualne pomieszczenie
+
+Uzyj klas i operacji wejscia/wyjscia.
