@@ -6,7 +6,6 @@ comp_choice = (random.choice(items))
 game = True
 print('Gra w Papier, kamien, nozyce')
 
-
 while game:
 	print('MENU')
 	print('Masz trzy możliwosci: 1 -> Papier, 2 -> Kamien, 3 -> Nozyce')
