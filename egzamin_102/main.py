@@ -90,13 +90,6 @@ class Gem(Item):
 		super().__init__(name, function)
 
 class Menu:
-	def exit(self):
-		print("\n\n")
-		print("Any key to exit.\n")
-		input()
-		quit()
-
-
 	def main_menu(self):
 		print("***********************")
 		print("*                     *")
@@ -107,6 +100,15 @@ class Menu:
 		print("1.New game")
 		print("2.Help and Options")
 		print("3.Exit \n\n")
+
+	def help(self):
+		pass
+
+	def exit(self):
+		print("\n\n")
+		print("Any key to exit.\n")
+		input()
+		quit()
 
 
 
