@@ -1,11 +1,101 @@
 # Zadanie na egzamin_102
 
-rooms = ["Hall", "Room_of_fire", "Sezam", "Room_of_watter"]
-items = ["Sword", "Shield", "Watter", "Key", "Book"]
-user_items = []
+class Room:
+	def __init__(self, name, location):
+		self.rooms = ["Hall","Water Room","Fire Room","Sezam"]
+		self.name = name
+		self.location = location
 
+	def next_room(self):
+		pass # lokalizacja w tablicy i indeks +1
+
+	def previous_room(self):
+		pass # lokalizacja w tablicy i indeks -1
+
+	def current_room(self):
+		pass # lokalizacja w tablicy jako indeks
+
+	def acessible_items(self):
+		pass # w zaleznosci od pomieszczenia ma pokazac itemy w konsoli
+
+	def possible_actions(self):
+		pass
+
+class Character:
+	def __init__(self, name, function, location):
+		self.characters = []
+		self.name = name
+		self.function = function
+		self.location = location
+
+	def move_to_next(self): # index pokoju. przenosimy postac z listy w daynm pokoju do listy nastepnym (Lub boolean dla kazdego roomu)
+		pass
+
+	def move_to_previous(self):
+		pass
+
+
+class Item:
+	def __init__(self, name, function, power_impact):
+		self.name = name
+		self.function = function
+		self.power_impact = power_impact
+
+	def get_item(self):
+		pass
+
+	def use_item(self):
+		pass
+
+
+class Hall(Room):
+	def __init__(self, name, location):
+		super().__init__(name, location)
+		pass
+
+
+class Watter_room(Room):
+	def __init__(self, name, location):
+		super().__init__(name, location)
+
+class Fire_room(Room):
+	def __init__(self, name, location):
+		super().__init__(name, location)
+
+class Sezam(Room):
+	def __init__(self, name, location):
+		super().__init__(name, location)
+
+class Player(Character):
+	def __init__(self, name, function, location):
+		super().__init__(name, function, location)
+		self.player_items = []
+		self.power_level = 0
+
+
+class Mag(Character):
+	def __init__(self, name, function, location):
+		super().__init__(name, function, location)
+
+class Watter_ball(Item):
+	def __init__(self, name, function, power_impact):
+		super().__init__(name, function, power_impact)
+
+class Fire_ball(Item):
+	def __init__(self, name, function, power_impact):
+		super().__init__(name, function, power_impact)
+
+class Gem(Item):
+	def __init__(self, name, function):
+		super().__init__(name, function)
 
 class Menu:
+	def exit(self):
+		print("\n\n")
+		print("Any key to exit.\n")
+		input()
+		quit()
+
 
 	def main_menu(self):
 		print("***********************")
@@ -17,108 +107,22 @@ class Menu:
 		print("1.New game")
 		print("2.Help and Options")
 		print("3.Exit \n\n")
-		pass
 
-	def new_game(self):
-		pass
-
-	def help(self):
-		print("Help")
-
-	@staticmethod
-	def exit():
-		print("\n")
-		print("Any key to exit. \n")
-		input()
-		quit()
-
-
-class Game:
-	def __init__(self):
-		pass
-
-	def new_game(self):
-		pass
-
-	@staticmethod
-	def game_over():
-		quit()
-
-
-class Game_character:
-	def __init__(self, name, role, location):
-		self.name = name
-		self.role = role
-		self.location = location
-		self.is_in_room = False
-		pass
-
-
-class Fireman(Game_character):
-	def __init__(self, role, location):
-		super().__init__(role, location)
-
-
-class Waterman(Game_character):
-	def __init__(self, role, location):
-		super().__init__(role, location)
-
-
-class Player(Game_character):
-	def __init__(self, start_point):
-		super().__init__()
-		self.start_point = start_point
-
-
-class Room:
-	def __init__(self, name):
-		self.name = name
-		self.items = []
-		self.occupied = False
-
-	def character_in_room(self):
-		self.occupied = True
-
-	def current_room(self):
-		pass
-
-	def previous_room(self):
-		pass
-
-	def next_room(self):
-		pass
-
-
-class Item(Room):
-	def __init__(self):
-		super().__init__()
-		pass
-
-	def item_position(self):
-		pass
-
-	def get_item(self):
-		pass
-
-	def use_item(self):
-		pass
 
 
 def main():
 	menu = Menu()
-	game = Game()
 	menu.main_menu()
 	data = input('Your choice is: \n\n')
 	match str(data):
 		case "1":
-			pass
+			menu.new_game()
 		case "2":
-			pass
+			menu.help()
 		case "3":
 			print("Press any key to exit.")
 			input()
 			print("\n\n")
-			game.new_game()
 
 
 if __name__ == "__main__":
