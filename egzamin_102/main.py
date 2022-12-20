@@ -1,7 +1,7 @@
 # Egzamin_102
 
 class Room:
-	def __init__(self, name, location, next_room, prev_room, current):
+	def __init__(self, name, location, next_room, prev_room, current, room_id):
 		self.rooms = ["Hall","Water Room","Fire Room","Sezam"]
 		self.name = name
 		self.location = location
@@ -13,12 +13,12 @@ class Room:
 
 	def next_room(self):
 		next_room_index = self.room_id + 1
-		return self.next_room_id
+		return self.next_room
 
 	def previous_room(self):
 		if self.room_id > 1:
 			prev_room_index = self.room_id - 1
-			return self.prev_room_id
+			return self.prev_room
 		else:
 			print("No previous room")
 			return self.room_id
@@ -127,6 +127,7 @@ class Gem(Item):
 
 class Menu:
 	def main_menu(self):
+		print("")
 		print("***********************")
 		print("*   Mysterious Game   *")
 		print("*********************** \n")
@@ -144,23 +145,19 @@ class Menu:
 		print("3.  Previous room")
 		print("4.  Available items")
 		print("5.  Use item")
+		print("6.  Return")
 		player_choice = input("Your choice is: ")
 		match str(player_choice):
-		  	case "1":
-		  		print("You are in: \n\n ")
-		   		room.current_room()
-		  	case "2":
-		  		print("Next room")
-		    	room.next_room()
-		  	case "3":
-		  		print("Previous room: ")
-		  		room.previous_room()
-		  	case "4":
-		  		print("Available items")
-		  		room.available_items()
-		  	case "5":
-		  		print("Using items")
-		  		item.use_item()
+			case "1":
+				print("You are in: \n\n ")
+			case "2":
+				print("Next room")
+			case "3":
+				print("Previous room: ")
+			case "4":
+				print("Available items")
+			case "5":
+				print("Using items")
 
 	def help(self):
 		print("Gra Mysterious Game jest prostą grą tekstową.")
