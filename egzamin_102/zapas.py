@@ -1,5 +1,13 @@
 # Egzamin_102
 
+class Game:
+	pass
+	''' 
+	Nowa Gra
+	tworzenie nowego gracza
+	lokalizacja Start_room
+	
+	'''
 class Room:
 	def __init__(self, name, location, next_room, prev_room, current):
 		self.rooms = ["Hall","Water Room","Fire Room","Sezam"]
@@ -11,24 +19,23 @@ class Room:
 		self.items_in_room = []
 		self.room_id = room_id
 
+	'''
+	możliwe opcje. Jak Start_room to nie ma poprzedniego. Idizemy dalej i klikamy co jest i jaki jest cel.
+	'''
+
 	def next_room(self):
-		next_room_index = self.room_id + 1
-		return self.next_room_id
+		pass
 
 	def previous_room(self):
-		if self.room_id > 1:
-			prev_room_index = self.room_id - 1
-			return self.prev_room_id
-		else:
-			print("No previous room")
-			return self.room_id
+		pass # lokalizacja w tablicy i indeks -1
 
 	def current_room(self):
-		return self.current_room
-		
-	def possible_actions(self, room):
 		pass
-		# print possible actions and prev menu
+	def acessible_items(self):
+		pass # w zaleznosci od pomieszczenia ma pokazac itemy w konsoli
+
+	def possible_actions(self):
+		pass
 
 class Character:
 	def __init__(self, name, function, location):
@@ -39,20 +46,16 @@ class Character:
 
 	def get_item(self):
 		pass
-		# usunac item z listy dostepnych itemow i dopisac do listy itemow playera
 
 	def use_item(self):
 		pass
-		# zrobic itemem action
-		# usunac item z listy itemow playera
 
-	def move_to_next(self): 
+	def move_to_next(self): # index pokoju. przenosimy postac z listy w danym pokoju do listy nastepnym (Lub boolean dla kazdego roomu)
 		pass
-		# room.next room
 
 	def move_to_previous(self):
 		pass
-		# room.previous_room
+
 
 class Item:
 	def __init__(self, name, function, power_impact):
@@ -67,25 +70,21 @@ class Item:
 	def item_power_impact(self):
 		pass
 
-class Start_room(Room):
-	def __init__(self, name, location, next_room, current, room_id):
-		super().__init__(name, location, next_room, current, room_id)
-		self.items_in_room = items_in_room
-		self.possoble_action = possoble_action
 
-	def actions(self):
-		pass
+class Start_room(Room):
+	def __init__(self, name, location, next_room, current):
+		super().__init__(name, location, next_room, current, room_id)
 		
 class Watter_room(Room):
-	def __init__(self, name, location, next_room, prev_room, current, room_id):
+	def __init__(self, name, location, next_room, prev_room, current):
 		super().__init__(name, location, next_room, prev_room, current, room_id)
 
 class Fire_room(Room):
-	def __init__(self, name, location, next_room, prev_room, current, room_id):
+	def __init__(self, name, location, next_room, prev_room, current):
 		super().__init__(name, location, next_room, prev_room, current, room_id)
 
 class Sezam(Room):
-	def __init__(self, name, location, prev_room, current, room_id):
+	def __init__(self, name, location, prev_room, current):
 		super().__init__(name, location, prev_room, current, room_id)
 
 class Player(Character):
@@ -93,6 +92,7 @@ class Player(Character):
 		super().__init__(name, function, location)
 		self.player_items = []
 		self.power_level = 0
+
 
 class Mag(Character):
 	def __init__(self, name, function, location):
@@ -102,28 +102,15 @@ class Watter_ball(Item):
 	def __init__(self, name, function, power_impact):
 		super().__init__(name, function, power_impact)
 
-	def watter_ball(self):
-		pass
-		# watterball append user items
-
 class Fire_ball(Item):
 	def __init__(self, name, function, power_impact):
 		super().__init__(name, function, power_impact)
-
-	def take_fireball(self):
-		pass
-		# fireball append user items
 
 class Gem(Item):
 	def __init__(self, name, function):
 		super().__init__(name, function)
 
-	def take_gem(self):
-		pass
-		# gam append user items
 
-	def use_gem(self):
-		print(" You Win!")
 
 class Menu:
 	def main_menu(self):
@@ -134,6 +121,53 @@ class Menu:
 		print("2.Help and Options")
 		print("3.Exit \n\n")
 
+'''	def start_room_menu(self):
+		print("***********************")
+		print("*      Start Room     *")
+		print("*********************** \n")
+		print("  Options: \n")
+		print("1. Go to the next room")
+		print("2. Current room name")
+		print("3. Available items")
+		print("4. Use item")
+		print("5. User menu")
+
+
+	def watter_room_menu(self):
+		print("***********************")
+		print("*      Water Room     *")
+		print("*********************** \n")
+		print("  Options: \n")
+		print("1. Go to the next room")
+		print("2. Go to the prev room")
+		print("3. Current room name")
+		print("4. Available items")
+		print("5. Use item")
+		print("6. User menu")
+
+	def fire_room_menu(self):
+		print("***********************")
+		print("*      Fire Room      *")
+		print("*********************** \n")
+		print("  Options: \n")
+		print("1. Go to the next room")
+		print("2. Go to the prev room")
+		print("3. Current room name")
+		print("4. Available items")k
+		print("5. Use item")
+		print("6. User menu")
+
+	def sezam_menu(self):
+		print("***********************")
+		print("*        Sezam        *")
+		print("*********************** \n")
+		print("  Options: \n")
+		print("Go to the prev room")
+		print("Current room name")
+		print("Available items")
+		print("Use item")
+		print("User menu")}
+'''
 	def player_menu(self):
 		print("***********************")
 		print("*     Player Menu       *")
@@ -144,34 +178,28 @@ class Menu:
 		print("3.  Previous room")
 		print("4.  Available items")
 		print("5.  Use item")
-		player_choice = input("Your choice is: ")
-		match str(player_choice):
-		  	case "1":
-		  		print("You are in: \n\n ")
-		   		room.current_room()
-		  	case "2":
-		  		print("Next room")
-		    	room.next_room()
-		  	case "3":
-		  		print("Previous room: ")
-		  		room.previous_room()
-		  	case "4":
-		  		print("Available items")
-		  		room.available_items()
-		  	case "5":
-		  		print("Using items")
-		  		item.use_item()
 
 	def help(self):
-		print("Gra Mysterious Game jest prostą grą tekstową.")
+		print('''
+		Gra Mysterious Game jest prostą grą tekstową. 
+		
+		''')
+
+	def exit(self):
+		print("\n\n")
+		print("Any key to exit.\n")
+		input()
+		quit()
+
 
 def main():
+
 	menu = Menu()
 	menu.main_menu()
 	data = input('Your choice is: \n\n')
 	match str(data):
 		case "1":
-			menu.player_menu()
+			menu.start_room_menu()
 		case "2":
 			menu.help()
 		case "3":
@@ -179,5 +207,26 @@ def main():
 			input()
 			print("\n\n")
 
+
 if __name__ == "__main__":
 	main()
+
+'''
+01. Main menu
+	1.Nowa gra
+	2.Pomoc
+	3.Wyjście
+1.1
+	1.Gdzie jestem
+	2.Dostepne przedmioty
+	3.Uzyj item
+	4.Warunki odblokowania DALEJ
+	5.Ostatni pokój( Zabierz Gral) <-- tylko w ostatnim
+	6.Poprzedni pokój
+	7.Następny pokój
+	8.Rozmowa z magiem
+1.2
+	1.O grze i opis
+	2.Sterowanie
+	3.Wyjście
+'''
