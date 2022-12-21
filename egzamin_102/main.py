@@ -7,7 +7,7 @@ class Menu:
 		print("*   Mysterious Game   *")
 		print("*********************** \n")
 		print("1.New game")
-		print("2.Help and Options")
+		print("2.About a game")
 		print("3.Exit \n\n")
 		data = input('Your choice is: \n')
 		match str(data):
@@ -20,7 +20,7 @@ class Menu:
 				input()
 				print("\n")
 
-	def player_menu(self, room):
+	def player_menu(self):
 		print("***********************")
 		print("*     Player Menu       *")
 		print("*********************** \n")
@@ -34,20 +34,23 @@ class Menu:
 		player_choice = input("Your choice is: \n")
 		match str(player_choice):
 			case "1":
-				print("You are in: \n\n ")
-				room.current_room.name()
-				# self.current_room()
+				print("You are in: \n ")
+				print()
+				self.player_menu()
 			case "2":
-				print("Next room")
-				room.next_room.name()
-				# self.next_room()
+				print("You are in: \n Next room \n")
+				print()
+				self.player_menu()
 			case "3":
-				print("Previous room: ")
-				room.prev_room.name()
-				# self.prev_room()
+				print("You are in: \n Previous room: \n")
+				print()
+				self.player_menu()
 			case "4":
 				print("Available items")  # items in room list
-				# self.available_items()
+				# self.available_items() for item in room_items print item np. :)
+				print("Press any key to return")
+				input()
+				self.player_menu()
 			case "5":
 				print("Using items") #item action and item from user items remove
 			case "6":
@@ -69,6 +72,7 @@ class Room:
 		self.prev_room = prev_room
 		self.current = current
 		self.items_in_room = []
+	
 
 	def current_room(self):
 		return self.current
@@ -79,13 +83,28 @@ class Room:
 	def prev_room(self):
 		return self.prev_room
 
+
+		# nazwa pokoju, itemy i możliwe opcje
+
 class Start_room(Room):
 	def __init__(self, name, next_room, current):
 		super().__init__(name, next_room, current)
 		pass
+
+	def start_room_tasks(self):
+		pass
+
+	def describe_room(self):
+		pass
 class Water_room(Room):
 	def __init__(self, name, next_room, prev_room, current):
 		super().__init__(name, next_room, prev_room, current)
+		pass
+
+	def water_room_tasks(self):
+		pass
+
+	def describe_water_room(self):
 		pass
 
 class Fire_room(Room):
@@ -93,9 +112,21 @@ class Fire_room(Room):
 		super().__init__(name, next_room, prev_room, current)
 		pass
 
+	def fire_room_tasks(self):
+		pass
+
+	def describe_fire_room(self):
+		pass
+
 class Sezam(Room):
 	def __init__(self, name, prev_room, current):
 		super().__init__(name, prev_room, current)
+		pass
+
+	def sezam_tasks(self):
+		pass
+
+	def describe_sezam(self):
 		pass
 
 class Character:
