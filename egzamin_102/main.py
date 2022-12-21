@@ -10,15 +10,21 @@ class Menu:
 		print("2.About a game")
 		print("3.Exit \n\n")
 		data = input('Your choice is: \n')
-		match str(data):
-			case "1":
-				self.player_menu()
-			case "2":
-				self.help()
-			case "3":
-				print("Press any key to exit.")
-				input()
-				print("\n")
+		if int(data) >= 1 and int(data) <= 6:
+			match str(data):
+				case "1":
+					self.player_menu()
+				case "2":
+					self.help()
+				case "3":
+					print("Press any key to exit.")
+					input()
+					print("\n")
+		else:
+			print("You have to choose a correct nummer.")
+			print("Press any key to return.")
+			input()
+			self.main_menu()
 
 	def player_menu(self):
 		print("***********************")
@@ -28,143 +34,125 @@ class Menu:
 		print("1.  Current room")
 		print("2.  Next room")
 		print("3.  Previous room")
-		print("4.  Available items")
-		print("5.  Use item")
-		print("6.  Return")
-		player_choice = input("Your choice is: \n")
-		match str(player_choice):
-			case "1":
-				print("You are in: \n ")
-				print()
-				self.player_menu()
-			case "2":
-				print("You are in: \n Next room \n")
-				print()
-				self.player_menu()
-			case "3":
-				print("You are in: \n Previous room: \n")
-				print()
-				self.player_menu()
-			case "4":
-				print("Available items")  # items in room list
-				# self.available_items() for item in room_items print item np. :)
-				print("Press any key to return")
-				input()
-				self.player_menu()
-			case "5":
-				print("Using items") #item action and item from user items remove
-			case "6":
-				print("Return to previous menu")
-				self.main_menu()
+		print("4.  Room menu")
+		print("5.  Return")
+		player_choice = input("Your choice is: \n\n")
+		if int(player_choice) >= 1 and int(player_choice) <= 6:
+			match str(player_choice):
+				case "1":
+					print("You are in: \n ")
+
+					self.player_menu()
+				case "2":
+					print("You are in: \n Next room \n")
+					print()
+					self.player_menu()
+				case "3":
+					print("You are in: \n Previous room: \n")
+					print()
+					self.player_menu()
+				case "4":
+					print("")
+					self.room_menu()
+				case "5":
+					print("Return to previous menu")
+					self.main_menu()
+		else:
+			print("You have to choose a correct nummer.")
+			print("Press any key to return.")
+			input()
+			self.player_menu()
+
+	def room_menu(self):
+		print("***********************")
+		print("*     Room Menu       *")
+		print("*********************** \n")
+		print("1.  Items")
+		print("2.  Available actions")
+		print("3.  Return")
+		player_choice = input("Your choice is: \n\n")
+		if int(player_choice) >= 1 and int(player_choice) <= 3:
+			match str(player_choice):
+				case "1":
+					print("You are in: \n ")
+
+					self.player_menu()
+				case "2":
+					print("You are in: \n Next room \n")
+					print()
+					self.player_menu()
+				case "3":
+					print("Return to previous menu")
+					self.player_menu()
+		else:
+			print("You have to choose a correct nummer.")
+			print("Press any key to return.")
+			input()
+			self.player_menu()
+
 
 	def help(self):
-		print('''	Gra Mysterious Game jest prostą grą tekstową. Zadaniem jest przechodzenie między komnatami, znalezienie przedmiotów i ich uzycie.
+		print('''	
+		
+		Gra Mysterious Game jest prostą grą tekstową. Zadaniem jest przechodzenie między komnatami, znalezienie przedmiotów i ich uzycie.
 		Po osiągnięciu ostatniej komnaty i zobyciu skarbu następuje koniec gry.
-		2Gracz w każdej chwili może wywołać listę dostępnych opcji poprzez wybranie z menu stosownej opcji. \n\n ''')
+		Gracz w każdej chwili może wywołać listę dostępnych opcji poprzez wybranie z menu stosownej opcji. \n\n 
+		
+		''')
 		print("Press any key to return")
 		input()
 		self.main_menu()
 
 class Room:
-	def __init__(self, name, next_room, prev_room, current):
+	def __init__(self, name, current_room, next_room, prev_room, task):
 		self.name = name
+		self.current_room = current_room
 		self.next_room = next_room
 		self.prev_room = prev_room
-		self.current = current
-		self.items_in_room = []
-	
+		self.task = task
+
+	def room_task(self):
+		print("You have to:" + self.task)
+
+	def describe(self):
+		print("You are in:" + self.name)
+		print("Yaour task is" + str(self.room_task()))
 
 	def current_room(self):
-		return self.current
+		return self.current_room()
 
-	def next_room(self):
-		return self.next_room
-
-	def prev_room(self):
-		return self.prev_room
-
-
-		# nazwa pokoju, itemy i możliwe opcje
 
 class Start_room(Room):
-	def __init__(self, name, next_room, current):
-		super().__init__(name, next_room, current)
-		pass
-
-	def start_room_tasks(self):
-		pass
-
-	def describe_room(self):
-		pass
+	def __init__(self, name, current_room, next_room, task):
+		super().__init__(name, current_room, next_room, task)
+		self.available_items = []
+	def available_items(self):
+		for items in self.available_items:
+			print(items)
 class Water_room(Room):
-	def __init__(self, name, next_room, prev_room, current):
-		super().__init__(name, next_room, prev_room, current)
-		pass
-
-	def water_room_tasks(self):
-		pass
-
-	def describe_water_room(self):
-		pass
-
+	pass
 class Fire_room(Room):
-	def __init__(self, name, next_room, prev_room, current):
-		super().__init__(name, next_room, prev_room, current)
-		pass
-
-	def fire_room_tasks(self):
-		pass
-
-	def describe_fire_room(self):
-		pass
-
+	pass
 class Sezam(Room):
-	def __init__(self, name, prev_room, current):
-		super().__init__(name, prev_room, current)
-		pass
-
-	def sezam_tasks(self):
-		pass
-
-	def describe_sezam(self):
-		pass
-
+	pass
 class Character:
-	def __init__(self):
-		pass
-
+	pass
 class Player(Character):
-	def __init__(self):
-		super().__init__()
-		pass
-
+	pass
 class Mag(Character):
-	def __init__(self):
-		super().__init__()
-		pass
-
+	pass
 class Item:
-	def __init__(self):
-		pass
-
+	pass
 class Watter_key(Item):
-	def __init__(self):
-		super().__init__()
-		pass
-
+	pass
 class Fire_key(Item):
-	def __init__(self):
-		super().__init__()
-		pass
-
+	pass
 class Gem(Item):
-	def __init__(self):
-		super().__init__()
-		pass
-
+	pass
 def main():
 	menu = Menu()
 	menu.main_menu()
+	start_room = Start_room("Hall", "Start room", "Watter room", "go to the next")
 
 if __name__ == "__main__":
 	main()
