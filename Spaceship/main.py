@@ -1,4 +1,4 @@
-# SpaceShooter by Jacek
+ # SpaceShooter by Jacek
 
 # import
 import random
