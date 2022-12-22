@@ -104,6 +104,30 @@ class Menu:
 		input()
 		self.main_menu()
 
+class Room:
+	def __init__(self, name):
+		self.name = name
+		self.rooms = []
+		self.items_in_room = []
+
+	def describe_room(self):
+		print("You are in" + self.name)
+		for item in self.items_in_room:
+			print("Available items:" + item)
+
+class Hall(Room):
+	def __init__(self, name):
+		super().__init__(name)
+
+class Item:
+	def __init__(self, name, function):
+		self.name = name
+		self.function = function
+
+	def item_function(self):
+		return self.function
+
+
 def main():
 	menu = Menu()
 	menu.main_menu()
