@@ -107,12 +107,59 @@ class Menu:
 class Room:
 	def __init__(self, name):
 		self.name = name
+		self.first = False
+		self.last = False
+		self.rooms = ['Hall', 'Water room','Fire room','Sezam']
+
+class Hall(Room):
+	def __init__(self):
+		super().__init__()
+
+class Water_room(Room):
+	def __init__(self):
+		super().__init__()
+
+class Fire_room(Room):
+	def __init__(self):
+		super().__init__()
+
+class Sezam(Room):
+	def __init__(self):
+		super().__init__()
+
+class Item:
+	def __init__(self, name):
+		self.name = name
+
+class Magic_key(Item):
+	pass
+
+class Water_item(Item):
+	def __init__(self):
+		super().__init__()
+
+class Fire_item(Item):
+	def __init__(self):
+		super().__init__()
+
+class Gem(Item):
+	def __init__(self):
+		super().__init__()
+
+
+class Player:
+	def __init__(self, name, health, age):
+		self.name = name
+		self.health = health
+		self.age = age
+
+	def introduce_yourself(self):
+		print("I am" + self.name)
+		print("I am" + self.age + "years old.")
 
 def main():
 	menu = Menu()
 	menu.main_menu()
-
-
 
 if __name__ == "__main__":
 	main()
