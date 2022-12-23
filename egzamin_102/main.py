@@ -1,4 +1,4 @@
-# Egzamin_102
+# # # Egzamin_102
 
 class Menu:
 	def main_menu(self):
@@ -93,12 +93,12 @@ class Menu:
 			self.room_menu()
 
 	def help(self):
-		print('''	
-		
+		print('''
+
 		Gra Mysterious Game jest prostą grą tekstową. Zadaniem jest przechodzenie między komnatami, znajdowanie przedmiotów i ich użycie.
-		Po osiągnięciu ostatniej komnaty i zobyciu skarbu następuje koniec gry.
-		Gracz w każdej chwili może wywołać listę dostępnych opcji poprzez wybranie z menu stosownej pozycji. \n\n 
-		
+		Po osiągnięciu ostatniej komnaty i zobyciu skarbu następuje koniec gry. Przedmioty należy zebrać w odpowiedniej kolejności.
+		Gracz w każdej chwili może wywołać listę dostępnych opcji poprzez wybranie z menu stosownej pozycji. \n\n
+
 		''')
 		print("Press any key to return")
 		input()
@@ -107,26 +107,6 @@ class Menu:
 class Room:
 	def __init__(self, name):
 		self.name = name
-		self.rooms = []
-		self.items_in_room = []
-
-	def describe_room(self):
-		print("You are in" + self.name)
-		for item in self.items_in_room:
-			print("Available items:" + item)
-
-class Hall(Room):
-	def __init__(self, name):
-		super().__init__(name)
-
-class Item:
-	def __init__(self, name, function):
-		self.name = name
-		self.function = function
-
-	def item_function(self):
-		return self.function
-
 
 def main():
 	menu = Menu()
@@ -136,3 +116,7 @@ def main():
 
 if __name__ == "__main__":
 	main()
+
+
+
+
