@@ -112,12 +112,12 @@ class Room:
 		self.rooms = ['Hall', 'Water room','Fire room','Sezam']
 
 class Hall(Room):
-	def __init__(self):
-		super().__init__()
+	def __init__(self, name):
+		super().__init__(name)
 
 class Water_room(Room):
-	def __init__(self):
-		super().__init__()
+	def __init__(self, name):
+		super().__init__(name)
 
 class Fire_room(Room):
 	def __init__(self):
@@ -128,12 +128,13 @@ class Sezam(Room):
 		super().__init__()
 
 class Item:
-	def __init__(self, name):
+	def __init__(self, name, power_level):
 		self.name = name
+		self.power_level = power_level
 
 class Magic_key(Item):
 	pass
-
+ 
 class Water_item(Item):
 	def __init__(self):
 		super().__init__()
@@ -143,23 +144,34 @@ class Fire_item(Item):
 		super().__init__()
 
 class Gem(Item):
-	def __init__(self):
-		super().__init__()
+	def __init__(self, name):
+		super().__init__(name)
 
 
 class Player:
+	player_items = ["Key", "Ball", "Fireworks", "Water flow"]
 	def __init__(self, name, health, age):
 		self.name = name
 		self.health = health
 		self.age = age
 
+
 	def introduce_yourself(self):
-		print("I am" + self.name)
-		print("I am" + self.age + "years old.")
+		print("I am " + self.name)
+		print("I am " + str(self.age) + "  years old.")
+
+	def get_item(self):
+		self.player_items.append(Gem)
+
 
 def main():
-	menu = Menu()
-	menu.main_menu()
+	# menu = Menu()
+	# menu.main_menu()
+	player = Player('Joe', 100, 22)
+	print(player.introduce_yourself())
+	for item in Player.player_items:
+		print(item)
+
 
 if __name__ == "__main__":
 	main()
