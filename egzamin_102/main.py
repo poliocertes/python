@@ -131,6 +131,7 @@ class Item:
 	def __init__(self, name, power_level):
 		self.name = name
 		self.power_level = power_level
+		self.items = ["Key", "Ball", "Fireworks", "Water flow"]
 
 class Magic_key(Item):
 	pass
@@ -149,7 +150,7 @@ class Gem(Item):
 
 
 class Player:
-	player_items = ["Key", "Ball", "Fireworks", "Water flow"]
+	player_items = []
 	def __init__(self, name, health, age):
 		self.name = name
 		self.health = health
