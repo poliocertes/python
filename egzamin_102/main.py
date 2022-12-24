@@ -128,9 +128,9 @@ class Sezam(Room):
 		super().__init__()
 
 class Item:
-	def __init__(self, name, power_level):
+	def __init__(self, name, power_impact):
 		self.name = name
-		self.power_level = power_level
+		self.power_impact = power_impact
 		self.items = ["Key", "Ball", "Fireworks", "Water flow"]
 
 class Magic_key(Item):
@@ -156,22 +156,16 @@ class Player:
 		self.health = health
 		self.age = age
 
-
 	def introduce_yourself(self):
-		print("I am " + self.name)
-		print("I am " + str(self.age) + "  years old.")
-
-	def get_item(self):
-		self.player_items.append(Gem)
-
+		print("\nI am " + self.name)
+		print("I am " + str(self.age) + " years old. My health level is " + str(self.health) + ".")
+		print("Let's play the game. ")
 
 def main():
-	# menu = Menu()
-	# menu.main_menu()
-	player = Player('Joe', 100, 22)
-	print(player.introduce_yourself())
-	for item in Player.player_items:
-		print(item)
+	player = Player('Joe', 100, 30)
+	player.introduce_yourself()
+	menu = Menu()
+	menu.main_menu()
 
 
 if __name__ == "__main__":
