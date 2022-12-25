@@ -69,7 +69,7 @@ class Menu:
 		print("***********************")
 		print("*     Room Menu       *")
 		print("*********************** \n")
-		print("1.  Items")
+		print("1.  Items in")
 		print("2.  Available actions")
 		print("3.  Return\n\n")
 		player_choice = input("Your choice is: ")
@@ -104,51 +104,6 @@ class Menu:
 		input()
 		self.main_menu()
 
-class Room:
-	def __init__(self, name):
-		self.name = name
-		self.first = False
-		self.last = False
-		self.rooms = ['Hall', 'Water room','Fire room','Sezam']
-
-class Hall(Room):
-	def __init__(self, name):
-		super().__init__(name)
-
-class Water_room(Room):
-	def __init__(self, name):
-		super().__init__(name)
-
-class Fire_room(Room):
-	def __init__(self):
-		super().__init__()
-
-class Sezam(Room):
-	def __init__(self):
-		super().__init__()
-
-class Item:
-	def __init__(self, name, power_impact):
-		self.name = name
-		self.power_impact = power_impact
-		self.items = ["Key", "Ball", "Fireworks", "Water flow"]
-
-class Magic_key(Item):
-	pass
- 
-class Water_item(Item):
-	def __init__(self):
-		super().__init__()
-
-class Fire_item(Item):
-	def __init__(self):
-		super().__init__()
-
-class Gem(Item):
-	def __init__(self, name):
-		super().__init__(name)
-
-
 class Player:
 	player_items = []
 	def __init__(self, name, health, age):
@@ -157,16 +112,47 @@ class Player:
 		self.age = age
 
 	def introduce_yourself(self):
-		print("\nI am " + self.name)
-		print("I am " + str(self.age) + " years old. My health level is " + str(self.health) + ".")
-		print("Let's play the game. ")
+		print("\nHello " + self.name)
+		print("You are " + str(self.age) + " years old. Your health level is now " + str(self.health) + ".")
+		print("Let's play the game. \n")
 
+
+class Room:
+	def __init__(self, name):
+		self.name = name
+
+	def current_room(self):
+		pass
+
+	def next_room(self):
+		pass
+
+	def prev_room(self):
+		pass
+
+class Start_room(Room):
+	def __init__(self, name):
+		super().__init__(name)
+		self.start_room_items = ['Magic key','Magic bootle','Basket']
+
+	def current_room(self):
+		return self.name
+	
+	def show_items(self):
+		for item in self.start_room_items:
+			print(item)
+
+	def use_item(self):
+		pass
 def main():
-	player = Player('Joe', 100, 30)
+	player_name = input("Enter your name: ")
+	player_age = input("How old are you? ")
+	player = Player(player_name, 100, player_age)
 	player.introduce_yourself()
-	menu = Menu()
-	menu.main_menu()
-
+	# menu = Menu()
+	# menu.main_menu()
+	start_room = Start_room('Hall')
+	start_room.show_items()
 
 if __name__ == "__main__":
 	main()
