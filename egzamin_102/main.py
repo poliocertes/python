@@ -140,6 +140,9 @@ class Start_room(Room):
 		for item in self.start_room_items:
 			print(item)
 
+	def current_room(self):
+		print('Nie działa')
+
 	def use_item(self):
 		pass
 def main():
@@ -147,12 +150,13 @@ def main():
 	player_age = input("How old are you? ")
 	player = Player(player_name, 100, player_age)
 	player.introduce_yourself()
+	start_room = Start_room('Hall')
+	start_room.show_items()
+	start_room.current_room()
 	player.show_player_items()
 	menu = Menu()
 	menu.main_menu()
-	start_room = Start_room("Hall")
-	start_room.show_items()
-	start_room.current_room()
+
 
 if __name__ == "__main__":
 	main()
