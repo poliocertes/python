@@ -22,28 +22,34 @@ class Challenge:
         pass
 
     def draw_challenge(self):
-        item = random.choice(challenge_list)
-        print('Your challenge ist: ' + item + '\n')
-        print('Do you want to remove a challenge from challenges list')
-        print('1.   Yes')
-        print('2.   No')
-        user_choice = input()
-        if int(user_choice) == 1:
-                    challenges_done.append(item)
-                    challenge_list.remove(item)
+        if len(challenge_list) != 0:
+            item = random.choice(challenge_list)
+            print('Your challenge ist: ' + item + '\n')
+            print('Do you want to remove a challenge from challenges list')
+            print('1.   Yes')
+            print('2.   No')
+            user_choice = input()
+            if int(user_choice) == 1:
+                        challenges_done.append(item)
+                        challenge_list.remove(item)
+            else:
+                pass
+
         else:
-            pass
+            print("Challenges list is empty. You have to add a few challenges first. ")
 
     def add_challenge(self):
         user_input = input("Your new challenge proposal: ")
         challenge_list.append(str(user_input))
-        print(challenge_list)
         main()
 
     def print_challenge_list(self):
-        print('\n Challenges list: \n')
-        for item in challenge_list:
-            print(item)
+        if len(challenge_list) != 0:
+            print('\n Challenges list: \n')
+            for item in challenge_list:
+                print(item)
+        else:
+            print("No more challenges. ")
 
     def print_done_list(self):
         print('\n Done list: \n')
@@ -75,8 +81,7 @@ def main():
                 challenge.draw_challenge()
                 main()
             case '5':
-                print("\nPress any key to exit.\n")
-                input()
+                quit()
 
 if __name__ == '__main__':
             main()
