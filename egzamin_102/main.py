@@ -105,24 +105,25 @@ class Menu:
 		self.main_menu()
 
 class Player:
-	player_items = []
 	def __init__(self, name, health, age):
 		self.name = name
 		self.health = health
 		self.age = age
+		self.player_items = ['Sword']
 
 	def introduce_yourself(self):
 		print("\nHello " + self.name)
 		print("You are " + str(self.age) + " years old. Your health level is now " + str(self.health) + ".")
 		print("Let's play the game. \n")
 
+	def show_player_items(self):
+		for item in self.player_items:
+			print(item)
+
 
 class Room:
 	def __init__(self, name):
 		self.name = name
-
-	def current_room(self):
-		pass
 
 	def next_room(self):
 		pass
@@ -135,9 +136,6 @@ class Start_room(Room):
 		super().__init__(name)
 		self.start_room_items = ['Magic key','Magic bootle','Basket']
 
-	def current_room(self):
-		return self.name
-	
 	def show_items(self):
 		for item in self.start_room_items:
 			print(item)
@@ -149,10 +147,12 @@ def main():
 	player_age = input("How old are you? ")
 	player = Player(player_name, 100, player_age)
 	player.introduce_yourself()
-	# menu = Menu()
-	# menu.main_menu()
-	start_room = Start_room('Hall')
+	player.show_player_items()
+	menu = Menu()
+	menu.main_menu()
+	start_room = Start_room("Hall")
 	start_room.show_items()
+	start_room.current_room()
 
 if __name__ == "__main__":
 	main()
