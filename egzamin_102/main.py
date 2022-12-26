@@ -1,93 +1,49 @@
 # Egzamin_102
-
+import time
 class Menu:
-	def main_menu(self):
-		print("")
-		print("***********************")
-		print("*   Mysterious Game   *")
-		print("*********************** \n")
-		print("1.  New game")
-		print("2.  About a game")
-		print("3.  Exit \n\n")
-		data = input('Your choice is: ')
-		if int(data) >= 1 and int(data) <= 3:
-			match str(data):
-				case "1":
-					self.player_menu()
-				case "2":
-					self.help()
-				case "3":
-					print("\nPress any key to exit.\n")
-					input()
-					print("\n")
-		else:
-			print("You have to choose a correct nummer.")
-			print("Press any key to return.")
-			input()
-			self.main_menu()
 
-	def player_menu(self):
+	def menu(self):
 		print("")
 		print("***********************")
-		print("*     Player Menu       *")
+		print("*     Game Menu       *")
 		print("*********************** \n")
-		print("  Options: \n")
 		print("1.  Current room")
-		print("2.  Next room")
-		print("3.  Previous room")
-		print("4.  Room menu")
-		print("5.  Return \n\n")
+		print("2.  Items in room")
+		print("3.  Available actions")
+		print("4.  Use item")
+		print("5.  Next room")
+		print("6.  Previous room")
+		print("7.  Room menu")
+		print("8.  Help")
+		print("9.  Exit \n\n")
 		player_choice = input("Your choice is: ")
-		if int(player_choice) >= 1 and int(player_choice) <= 5:
+		if int(player_choice) >= 1 and int(player_choice) <= 9:
 			match str(player_choice):
 				case "1":
-					print("\nYou are in: \n ")
-					self.player_menu()
+					pass
 				case "2":
-					print("\nYou are in: \n Next room \n")
-
-					self.player_menu()
+					pass
 				case "3":
-					print("\nYou are in: \n Previous room: \n")
-
-					self.player_menu()
+					pass
 				case "4":
-
-					self.room_menu()
+					pass
 				case "5":
-					print("\nReturn to previous menu")
-					self.main_menu()
+					pass
+				case "6":
+					pass
+				case "7":
+					pass
+				case "8":
+					print("About a game")
+					self.help()
+				case "9":
+					time.sleep(1)
+					quit()
 		else:
 			print("You have to choose a correct nummer.")
 			print("Press any key to return.")
 			input()
-			self.player_menu()
-
-	def room_menu(self):
-		print("")
-		print("***********************")
-		print("*     Room Menu       *")
-		print("*********************** \n")
-		print("1.  Items in")
-		print("2.  Available actions")
-		print("3.  Return\n\n")
-		player_choice = input("Your choice is: ")
-		if int(player_choice) >= 1 and int(player_choice) <= 3:
-			match str(player_choice):
-				case "1":
-					self.room_menu()
-				case "2":
-					print("You are in: \n Next room \n")
-					print()
-					self.room_menu()
-				case "3":
-					print("Return to previous menu")
-					self.player_menu()
-		else:
-			print("You have to choose a correct nummer.")
-			print("Press any key to return.")
-			input()
-			self.room_menu()
+			self.menu()
 
 	def help(self):
 		print('''
@@ -99,11 +55,14 @@ class Menu:
 		''')
 		print("Press any key to return")
 		input()
-		self.main_menu()
+		self.menu()
 
 class Room:
 	def __init__(self, name):
 		self.name = name
+
+	def current_room(self):
+		print("Current Room")
 
 class Player:
 	def __init__(self, name, health, age):
@@ -136,14 +95,35 @@ class Start_room(Room):
 		pass
 
 def main_menu():
+	rooms = ['Hall','Fire room','Water room','Sezam']
 	player_name = input("Enter your name: ")
 	player_age = input("How old are you? ")
 	player = Player(player_name, 100, player_age)
 	player.introduce_yourself()
+	room_list = rooms[0]
+	print(player_name + ' you are in ' + room_list + ' now.')
 	menu = Menu()
-	menu.main_menu()
+	menu.menu()
+	data = input('Your choice is: ')
+	if int(data) >= 1 and int(data) <= 3:
+		match str(data):
+			case "1":
+				menu.menu()
+			case "2":
+				menu.help()
+			case "3":
+				print("\nPress any key to exit.\n")
+				input()
+				print("\n")
+	else:
+		print("You have to choose a correct nummer.")
+		print("Press any key to return.")
+		input()
+		menu.menu()
+
 
 def main():
+
 	main_menu()
 if __name__ == "__main__":
 	main()
