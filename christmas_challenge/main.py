@@ -18,9 +18,6 @@ class Menu:
         print('5.   Exit game')
 
 class Challenge:
-    def __init__(self):
-        pass
-
     def draw_challenge(self):
         if len(challenge_list) != 0:
             item = random.choice(challenge_list)
