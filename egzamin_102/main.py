@@ -3,12 +3,12 @@ import time
 
 rooms = ['Hall','Chamber of magic','Sezam']
 class Room:
-	def __init__(self, name):
+	def __init__(self, name, current_room):
 		self.name = name
-		self.rooms = []
+		self.current_room = current_room
 
 	def current_room(self):
-		pass
+		return self.current_room
 
 	def next_room(self):
 		pass
