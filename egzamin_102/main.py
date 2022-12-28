@@ -1,7 +1,8 @@
 # egzamin 102
-from menu import *
-from characters import *
 import time
+from characters import *
+from menu import *
+
 
 class Room(object):
 	def __init__(self, name, description):
@@ -16,26 +17,59 @@ class First_room(Room):
 		super().__init__(name, description)
 		self.room_items = ['1','2','3']
 
+	def actions_in_room(self):
+		pass
+
+	def describe_room(self):
+		pass
+
+	def show_room_items(self):
+		for item in self.room_items:
+			print(item)
+
 class Second_room(Room):
 	def __init__(self, name, description):
 		super().__init__(name, description)
 		self.room_items = ['1','2','3']
+
+	def actions_in_room(self):
+		pass
+
+	def describe_room(self):
+		pass
+
+	def show_room_items(self):
+		for item in self.room_items:
+			print(item)
 
 class Last_room(Room):
 	def __init__(self, name, description):
 		super().__init__(name, description)
 		self.room_items = ['1','2','3']
 
+	def actions_in_room(self):
+		pass
+
+	def describe_room(self):
+		pass
+
 	def show_room_items(self):
 		for item in self.room_items:
 			print(item)
-
-
 class Item(object):
 	def __init__(self, name, energy_impact):
 		self.name = name
 		self.energy_impact = energy_impact
 
+class Key(Item):
+	pass
+# required items!!!
+# energy impact
+class Book(Item):
+	pass
+
+class Bottle(Item):
+	pass
 
 def main():
 	room_list = ['First room','Middle room','Last room']
@@ -63,7 +97,8 @@ def main():
 			case "6":
 				pass
 			case "7":
-				pass
+				print("\n")
+				menu.help_menu()
 			case "8":
 				print("--------------")
 				print("Exit the game.")
