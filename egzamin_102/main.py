@@ -2,81 +2,41 @@
 import time
 from characters import *
 from menu import *
+from rooms import *
 
 
-class Room(object):
-	def __init__(self, name, description):
-		self.name = name
-		self.description = description
 
-	def current_room(self):
-		return self.name
-
-class First_room(Room):
-	def __init__(self, name, description):
-		super().__init__(name, description)
-		self.room_items = ['1','2','3']
-
-	def actions_in_room(self):
-		pass
-
-	def describe_room(self):
-		pass
-
-	def show_room_items(self):
-		for item in self.room_items:
-			print(item)
-
-class Second_room(Room):
-	def __init__(self, name, description):
-		super().__init__(name, description)
-		self.room_items = ['1','2','3']
-
-	def actions_in_room(self):
-		pass
-
-	def describe_room(self):
-		pass
-
-	def show_room_items(self):
-		for item in self.room_items:
-			print(item)
-
-class Last_room(Room):
-	def __init__(self, name, description):
-		super().__init__(name, description)
-		self.room_items = ['1','2','3']
-
-	def actions_in_room(self):
-		pass
-
-	def describe_room(self):
-		pass
-
-	def show_room_items(self):
-		for item in self.room_items:
-			print(item)
 class Item(object):
 	def __init__(self, name, energy_impact):
 		self.name = name
 		self.energy_impact = energy_impact
 
 class Key(Item):
-	pass
-# required items!!!
-# energy impact
+	def __init__(self,name,energy_impact):
+		super().__init__(name,energy_impact)
+
+	def item_requirements(self):
+		pass
+
+	def energy_impact(self):
+		pass
+
 class Book(Item):
+	def __init__(self,name,energy_impact):
+		super().__init__(name,energy_impact)
 	pass
 
 class Bottle(Item):
+	def __init__(self,name,energy_impact):
+		super().__init__(name,energy_impact)
 	pass
 
 def main():
-	room_list = ['First room','Middle room','Last room']
+	room_list = ['First room','Second room','Last room']
 	role_list = ['Player','Mag']
 	menu = Menu()
 	menu.main_menu()
-	hero = Hero("Joe", role_list[0])
+	hero = Hero("Joe", role_list[0], 10)
 	player_choice = input("Your choice is >> ")
 	while not player_choice.isnumeric():
 		print("Enter a number!")
@@ -84,7 +44,7 @@ def main():
 	if 1 <= int(player_choice) <= 8:
 		match str(player_choice):
 			case "1":
-				pass
+				hero.introduce_yourself()
 			case "2":
 				pass
 			case "3":
