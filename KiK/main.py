@@ -19,6 +19,7 @@ class Game:
 	def choose_symbol(self):
 		choosen_symbol = random.randint(0, 1)
 		return choosen_symbol
+		# napisać do końca
 
 	def mark_field(self):
 		va = self.choose_symbol()
