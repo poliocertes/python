@@ -20,7 +20,7 @@ class Hero(Character):
 class Mag(Character):
 	def __init__(self, name, role, energy_level):
 		super().__init__(name, role, energy_level)
-		self.mag_items_list = ['Sword']
+		self.mag_items_list = ['Magic book']
 
 	def mag_items(self):
 		for item in self.mag_items_list:

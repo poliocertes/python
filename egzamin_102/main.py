@@ -6,30 +6,7 @@ from rooms import *
 
 
 
-class Item(object):
-	def __init__(self, name, energy_impact):
-		self.name = name
-		self.energy_impact = energy_impact
 
-class Key(Item):
-	def __init__(self,name,energy_impact):
-		super().__init__(name,energy_impact)
-
-	def item_requirements(self):
-		pass
-
-	def energy_impact(self):
-		pass
-
-class Book(Item):
-	def __init__(self,name,energy_impact):
-		super().__init__(name,energy_impact)
-	pass
-
-class Bottle(Item):
-	def __init__(self,name,energy_impact):
-		super().__init__(name,energy_impact)
-	pass
 
 def main():
 	room_list = ['First room','Second room','Last room']
@@ -44,7 +21,7 @@ def main():
 	if 1 <= int(player_choice) <= 8:
 		match str(player_choice):
 			case "1":
-				hero.introduce_yourself()
+				pass
 			case "2":
 				pass
 			case "3":
@@ -55,7 +32,7 @@ def main():
 			case "5":
 				pass
 			case "6":
-				pass
+				hero.introduce_yourself()
 			case "7":
 				print("\n")
 				menu.help_menu()

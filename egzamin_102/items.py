@@ -18,9 +18,19 @@ class Key(Item):
 class Book(Item):
 	def __init__(self,name,energy_impact):
 		super().__init__(name,energy_impact)
-	pass
+	
+	def item_requirements(self):
+		pass
+
+	def energy_impact(self):
+		pass
 
 class Bottle(Item):
 	def __init__(self,name,energy_impact):
 		super().__init__(name,energy_impact)
-	pass
+	
+	def item_requirements(self):
+		pass
+
+	def energy_impact(self):
+		pass
