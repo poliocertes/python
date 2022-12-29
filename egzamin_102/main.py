@@ -4,10 +4,6 @@ from characters import *
 from menu import *
 from rooms import *
 
-
-
-
-
 def main():
 	room_list = ['First room','Second room','Last room']
 	role_list = ['Player','Mag']
@@ -29,10 +25,12 @@ def main():
 			case "4":
 				print("\n")
 				hero.hero_items()
+				main()
 			case "5":
 				pass
 			case "6":
 				hero.introduce_yourself()
+				main()
 			case "7":
 				print("\n")
 				menu.help_menu()

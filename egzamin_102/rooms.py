@@ -17,7 +17,9 @@ class First_room(Room):
 		pass
 
 	def describe_room(self):
-		pass
+		print('''
+				W tym miejscu zaczyna się gra. 
+			''')
 
 	def show_room_items(self):
 		for item in self.room_items:
@@ -32,7 +34,9 @@ class Second_room(Room):
 		pass
 
 	def describe_room(self):
-		pass
+		print('''
+				Połowa misji. 
+			''')
 
 	def show_room_items(self):
 		for item in self.room_items:
@@ -47,7 +51,9 @@ class Last_room(Room):
 		pass
 
 	def describe_room(self):
-		pass
+		print('''
+				Jesteś o krok od sukcesu.
+			''')
 
 	def show_room_items(self):
 		for item in self.room_items:

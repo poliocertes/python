@@ -11,9 +11,14 @@ class Key(Item):
 
 	def item_requirements(self):
 		pass
+		# jesli wymagany inny item jest dodaj do user list a jak nie to print ze najpierw tamten
 
-	def energy_impact(self):
+	def energy_impact(self, hero):
+		hero.energy_impact -=1
+
+	def use_item(self):
 		pass
+		# if item in self.items_list:....
 
 class Book(Item):
 	def __init__(self,name,energy_impact):
@@ -22,8 +27,12 @@ class Book(Item):
 	def item_requirements(self):
 		pass
 
-	def energy_impact(self):
+	def energy_impact(self, hero):
+		hero.energy_impact +=1
+
+	def use_item(self):
 		pass
+		# if item in self.items_list:....
 
 class Bottle(Item):
 	def __init__(self,name,energy_impact):
@@ -32,5 +41,9 @@ class Bottle(Item):
 	def item_requirements(self):
 		pass
 
-	def energy_impact(self):
+	def energy_impact(self, hero):
+		hero.energy_impact -=1
+
+	def use_item(self):
 		pass
+		# if item in self.items_list:....
