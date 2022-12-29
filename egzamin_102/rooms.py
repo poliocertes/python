@@ -8,6 +8,10 @@ class Room(object):
 	def current_room(self):
 		return self.name
 
+	def next_room(self):
+		pass
+
+
 class First_room(Room):
 	def __init__(self, name, description):
 		super().__init__(name, description)
