@@ -19,8 +19,7 @@ class Game:
 	def choose_symbol(self):
 		choosen_symbol = random.randint(0, 1)
 		return choosen_symbol
-		# napisać do końca
-
+	
 	def mark_field(self):
 		va = self.choose_symbol()
 		global counter
@@ -33,7 +32,7 @@ class Game:
 				counter += 1
 		elif counter > 0:
 			counter += 1
-			print(counter)  # to działa
+			print(counter)  
 
 	def check_results(self):
 		pass
@@ -58,6 +57,8 @@ class Game:
 def main():
 	game = Game()
 	game.board()
+	game.choose_symbol()
+
 	mainloop()
 	
 
