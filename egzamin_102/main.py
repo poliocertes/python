@@ -29,6 +29,7 @@ def main():
 				print('\n----------------------')
 				print('Dostępne przedmioty')
 				print('----------------------')
+				
 				first_room.show_room_items()
 				main()
 			case '3':
