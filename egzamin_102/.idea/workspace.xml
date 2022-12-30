@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22edfb5f-b75f-4ee2-aef2-32b3b0312a58" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../KiK/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../KiK/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/characters.py" beforeDir="false" afterPath="$PROJECT_DIR$/characters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/items.py" beforeDir="false" afterPath="$PROJECT_DIR$/items.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/messages.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/rooms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

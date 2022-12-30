@@ -1,9 +1,8 @@
 # rooms.py
 
 class Room(object):
-	def __init__(self, name, description):
+	def __init__(self, name):
 		self.name = name
-		self.description = description
 
 	def current_room(self):
 		return self.name
@@ -13,9 +12,9 @@ class Room(object):
 
 
 class First_room(Room):
-	def __init__(self, name, description):
-		super().__init__(name, description)
-		self.room_items = ['1','2','3']
+	def __init__(self, name):
+		super().__init__(name)
+		self.room_items = ['Książka','Magiczny klucz']
 
 	def actions_in_room(self):
 		pass
@@ -30,8 +29,8 @@ class First_room(Room):
 			print(item)
 
 class Second_room(Room):
-	def __init__(self, name, description):
-		super().__init__(name, description)
+	def __init__(self, name):
+		super().__init__(name)
 		self.room_items = ['1','2','3']
 
 	def actions_in_room(self):
@@ -47,8 +46,8 @@ class Second_room(Room):
 			print(item)
 
 class Last_room(Room):
-	def __init__(self, name, description):
-		super().__init__(name, description)
+	def __init__(self, name):
+		super().__init__(name)
 		self.room_items = ['1','2','3']
 
 	def actions_in_room(self):

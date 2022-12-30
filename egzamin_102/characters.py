@@ -5,8 +5,8 @@ class Character(object):
 		self.energy_level = energy_level
 
 	def introduce_yourself(self):
-		print("I'm ", self.name)
-		print("I have a ",self.energy_level," points of enegry.")
+		print('I am ', self.name)
+		print('I have a ',self.energy_level,' points of enegry.')
 
 class Hero(Character):
 	def __init__(self, name, role, energy_level):
