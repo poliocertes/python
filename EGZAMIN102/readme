@@ -1,0 +1,15 @@
+Napisz prostą grę tekstową. Wymyśl prostą zagadkę, zaprojektuj jedno, max dwa pomieszczenia, dodaj możliwość zdobywania i używania przedmiotów. Pozwól nam przeżyć jakąś mini przygodę 🙂
+
+Obsłuż komendy takie jak:
+
+użyj PRZEDMIOT
+zabierz PRZEDMIOT
+przedmioty - wyświetli listę przedmiotów
+pomoc - wyświetli listę dostępnych instrukcji
+opisz - opisuje aktualne pomieszczenie
+
+Dodaj komendy, które uznasz jeszcze za potrzebne.
+
+Użyj klas i operacji wejścia/wyjścia.
+
+Nie twórz niestworzonej historii, która zajmie nam pół roku 😉 Tylko coś, co można skończyć w max 5-10 minut. To ma być proste ćwiczenie, a nie wprawka pod nowy Baldour's Gate 🙂
