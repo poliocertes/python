@@ -41,3 +41,8 @@ class Story:
 			2. Zabierz przedmiot.
 			3. Użyj przedmiot.
 			4. Powrót\n''')
+
+	def game_over(self):
+		print('''
+			Bongus
+		''')

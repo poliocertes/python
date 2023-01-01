@@ -18,13 +18,6 @@ def room_one_menu():
     match str(room_one_user_input):
         case '1':
             first_ch.show_items()
-            '''
-                1. Dostępne przedmioty.
-                2. Zabierz przedmiot.
-                3. Użyj przedmiot.
-                4. Następna komnata.
-                5. Powrót
-                '''
         case '2':
             pass
         case '3':
@@ -36,13 +29,33 @@ def room_one_menu():
 
 
 def room_two_menu():
-    print('haj')
-    room_three_menu()
+    story.room_one()
+    room_two_user_input = input('No i? ')
+    match str(room_two_user_input):
+        case '1':
+            second_ch.show_items()
+        case '2':
+            pass
+        case '3':
+            pass
+        case '4':
+            room_three_menu()
+        case '5':
+            pass
 
 
 def room_three_menu():
-    input_r3 = input('Dawaj: ')
-
+    story.room_three()
+    room_three_user_input = input('No i? ')
+    match str(room_three_user_input):
+        case '1':
+            last_ch.show_items()
+        case '2':
+            pass
+        case '3':
+            pass
+        case '4':
+            room_two_menu()
 
 def main():
     story.start_game()
