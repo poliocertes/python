@@ -1,3 +1,6 @@
+import time
+
+
 class Story:
 
 	def start_game(self):
@@ -13,6 +16,7 @@ class Story:
 			Jesteś w pierwszej komnacie. Musisz najpierw wziąć magiczny klucz, który pozwoli Ci otworzyć przejście
 			do drugiej komnaty.Po znalezieniu klucza nie ruszaj od razu dalej. Będziesz potrzebował czegoś jeszcze... 
 			Co chcesz zrobić? 
+			
 			1. Dostępne przedmioty.
 			2. Zabierz przedmiot.
 			3. Użyj przedmiot.
@@ -25,6 +29,7 @@ class Story:
 			Jesteś w drugiej komnacie. Musisz najpierw wziąć magiczny klucz, który pozwoli Ci otworzyć przejście
 			do drugiej komnaty.Po znalezieniu klucza nie ruszaj od razu dalej. Będziesz potrzebował czegoś jeszcze... 
 			Co chcesz zrobić? 
+			
 			1. Dostępne przedmioty.
 			2. Zabierz przedmiot.
 			3. Użyj przedmiot.
@@ -37,6 +42,7 @@ class Story:
 			Jesteś w ostatniej komnacie. Cel już blisko. Musisz najpierw wziąć magiczny klucz, który pozwoli Ci otworzyć przejście
 			do drugiej komnaty.Po znalezieniu klucza nie ruszaj od razu dalej. Będziesz potrzebował czegoś jeszcze... 
 			Co chcesz zrobić? 
+			
 			1. Dostępne przedmioty.
 			2. Zabierz przedmiot.
 			3. Użyj przedmiot.
@@ -44,5 +50,8 @@ class Story:
 
 	def game_over(self):
 		print('''
-			Bongus
+			Tym sposobem doszedłeś drogi graczu do końca zabawy. Wciśnij dowolny klawisz aby zakończyć gre. Dzięki za 
+			spedzony wspólnie czas.
 		''')
+		input()
+		time.sleep(3)
