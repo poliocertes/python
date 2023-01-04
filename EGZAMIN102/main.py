@@ -2,6 +2,7 @@
 
 import time
 
+
 class Story:
 
     def start_game(self):
@@ -10,7 +11,6 @@ class Story:
             Witaj w grze "Znajdź skarb". Twoja przygoda zaczyna się w pierwszej z trzech komnat. 
             Musisz zbierać przedmioty potrzebne do tego, aby móc pójść dalej. 
             Zaczynamy grę? t/n \n''')
-
 
     def room_one(self):
         print('''
@@ -44,7 +44,7 @@ class Story:
         print('''
             Jesteś w ostatniej komnacie. Cel już blisko. Niewiele przed Toba. Sprawdzajac dostepne przedmioty pamietaj 
             aby porozmawiac z Magiem, ktory tu na Ciebie od poczatku czeka i chce Ci cos powiedziec. Ostatni zebrany elememnt odbierze Ci tez troche mocy.
-            Co chcesz zrobić? 
+            Twoj wybor? 
             
             1. Dostępne przedmioty.
             2. Zabierz przedmiot.
@@ -58,6 +58,7 @@ class Story:
         ''')
         input()
         time.sleep(3)
+
 
 class Room:
     def __init__(self, name, location):
@@ -80,12 +81,7 @@ class First_chamber(Room):
     def show_items(self):
         print(f'\nPrzedmioty dostępne w {self.name}: ')
         for item in self.items:
-            print(item)
-
-    def get_item(self):
-        if item in self.items:
-            Player.player_items.append(item)
-            self.items.remove(item)
+            print(item)   
 
 
 class Second_chamber(Room):
@@ -98,11 +94,6 @@ class Second_chamber(Room):
         for item in self.items:
             print(item)
 
-    def get_item(self):
-        if item in self.items:
-            Player.player_items.append(item)
-            self.items.remove(item)
-
 
 class Last_chamber(Room):
     def __init__(self, name, location):
@@ -113,11 +104,6 @@ class Last_chamber(Room):
         print(f'\nPrzedmioty dostępne w {self.name} : ')
         for item in self.items:
             print(item)
-
-    def get_item(self):
-        if item in self.items:
-            Player.player_items.append(item)
-            self.items.remove(item)
 
 
 class Character:
@@ -183,24 +169,32 @@ def room_one_menu():
         case '2':
             print('Masz w komnacie dostepne dwa przedmioty:')
             first_chamber.show_items()
-            choosen_item = input('Co chcesz wziac:')
+            choosen_item = input('Ktory przedmiot chcesz wziac:')
             match str(choosen_item):
-            case '1':
-                pass
-                print('Zabierasz ')
-            case '2':
-                pass
-                print('Zabierasz ')
-            # zabierz przedmiot
+                case '1':
+                    taken_item = first_chamber.items[0]
+                    player.player_items.append(first_chamber.items[0])
+                    first_chamber.items.remove(first_chamber.items[0])
+                    print('Zabierasz ', taken_item)
+                    room_one_menu()
+                case '2':
+                    taken_item = first_chamber.items[1]
+                    player.player_items.append(first_chamber.items[1])
+                    first_chamber.items.remove(first_chamber.items[1])
+                    print('Zabierasz ', taken_item)
+                    room_one_menu()
+
         case '3':
             print('Player', player.name,' posiada:')
             player.show_items()
-            choosen_user_item = input('Czego chcesz uszy :')
+            choosen_user_item = input('Czego chcesz uzyc :')
             match str(choosen_user_item):
-            case '1':
-                pass
-            case '2':
-                pass
+                case '1':
+                    player.player_items[0]
+                    print('Uzywam...')
+                case '2':
+                    player.player_items[1]
+                    print('Uzywam...')
             
         case '4':
             room_two_menu()
@@ -251,8 +245,8 @@ def room_three_menu():
 
 
 def main():
+    print('Imie gracza: ')
     player_name = str(player.character_name())
-    print(f'Jestem ' + {player_name} )
     story.start_game()
     player_choice = input('Twój wybór: ')
     if str(player_choice) == 't':
