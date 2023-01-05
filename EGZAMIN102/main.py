@@ -1,17 +1,19 @@
 # --- egzamin_102 by Jacek --- #
 import time
-
-
+ 
+ 
 class Story:
-
-    def start_game(self):
+ 
+    @staticmethod
+    def start_game():
         print('\n**** ZNAJDŹ SKARB ****')
         print('''   
             Witaj w grze "Znajdź skarb". Twoja przygoda zaczyna się w pierwszej z trzech komnat. 
             Musisz zbierać przedmioty potrzebne do tego, aby móc pójść dalej. 
             Zaczynamy grę? t/n \n''')
-
-    def room_one(self):
+ 
+    @staticmethod
+    def room_one():
         print('''
             Jesteś w pierwszej komnacie. Musisz najpierw wziąć magiczny klucz, który pozwoli Ci otworzyć przejście
             do drugiej komnaty.Po znalezieniu klucza nie ruszaj od razu dalej. Będziesz potrzebował czegoś jeszcze...
@@ -23,9 +25,9 @@ class Story:
             3. Użyj przedmiot.
             4. Następna komnata.
             5. Powrót\n''')
-
-
-    def room_two(self):
+ 
+    @staticmethod
+    def room_two():
         print('''
             Jesteś w drugiej komnacie. Powienies odnalezc sekretny klucz, który pozwoli Ci otworzyć przejście
             do kolejnej juz ostatniej komnaty. Po znalezieniu klucza nie ruszaj od razu dalej. Będziesz potrzebował czegoś jeszcze... 
@@ -37,9 +39,9 @@ class Story:
             3. Użyj przedmiot.
             4. Następna komnata.
             5. Powrót\n''')
-
-
-    def room_three(self):
+ 
+    @staticmethod
+    def room_three():
         print('''
             Jesteś w ostatniej komnacie. Cel już blisko. Niewiele przed Toba. Sprawdzajac dostepne przedmioty pamietaj 
             aby najpierw porozmawiac z Magiem, ktory tu na Ciebie od poczatku czeka i chce Ci cos powiedziec. Ostatni zebrany elememnt odbierze Ci tez troche mocy.
@@ -49,116 +51,119 @@ class Story:
             2. Zabierz przedmiot.
             3. Użyj przedmiot.
             4. Koniec przygody\n''')
-
-    def game_over(self):
+ 
+    @staticmethod
+    def game_over():
         print('''
             Tym sposobem doszedłeś drogi graczu do końca zabawy. Zdobyles skarb. Moje gratulacje. Wciśnij dowolny klawisz aby zakończyć gre. Dzięki za 
             spedzony wspólnie czas.
         ''')
         input()
         time.sleep(3)
-
-
+ 
+ 
 class Room:
     def __init__(self, name, location):
         self.name = name
         self.location = location
-
+ 
     def room_name(self):
         print('\nYou are in: ')
         print(self.name)
-
+ 
     def location(self):
         return self.location
-
-
+ 
+ 
 class First_chamber(Room):
     def __init__(self, name, location):
         super().__init__(name, location)
         self.items = ['Magic Key', 'Magic Book']
-
+ 
     def show_items(self):
         print(f'\nPrzedmioty dostępne w {self.name}: \n')
         for item in self.items:
-            print(item)   
-
-
+            print(item)
+ 
+ 
 class Second_chamber(Room):
     def __init__(self, name, location):
         super().__init__(name, location)
         self.items = ['Magic Bottle', 'Secret Key']
-
+ 
     def show_items(self):
         print(f'\nPrzedmioty dostępne w {self.name} : \n')
         for item in self.items:
             print(item)
-
-
+ 
+ 
 class Last_chamber(Room):
     def __init__(self, name, location):
         super().__init__(name, location)
         self.items = ['Gem']
-
+ 
     def show_items(self):
         print(f'\nPrzedmioty dostępne w {self.name} : \n')
         for item in self.items:
             print(item)
-
-
+ 
+ 
 class Character:
     def __init__(self, name, role, energy_level):
         self.name = name
         self.role = role
         self.energy_level = energy_level
-
+ 
     def character_name(self):
-        print(self.name)
-
+        return self.name
+ 
     def character_role(self):
         print(self.role)
-
+ 
     def energy_level(self):
         return self.energy_level
-
-
+ 
+ 
 class Player(Character):
     def __init__(self, name, role, energy_level):
         super().__init__(name, role, energy_level)
         self.player_items = []
-
+ 
     def show_items(self):
         if len(player.player_items) > 0:
             for item in self.player_items:
                 print(item)
         else:
             print('Brak przedmiotów')
-
-
+ 
+ 
 class Mag(Character):
     def __init__(self, name, role, energy_level):
         super().__init__(name, role, energy_level)
         self.mag_items = ['Magic']
-
-    def say_instruction(self):
+ 
+    @staticmethod
+    def say_instruction():
         print('''Witaj Graczu. Jestes u kresu wedrowki. Przed Toba skarb. Aby ukonczyc wyzwanie musisz miec wystarczajaco duzy zapas energii.
             
             ''')
-        time.sleep(7)
+        print('\n')
 
-
+ 
+ 
 story = Story()
 first_chamber = First_chamber('First Chamber', 1)
 second_chamber = Second_chamber('Second Chamber', 2)
 last_chamber = Last_chamber('Last Chamber', 3)
 player = Player('Joe', 'player', 10)
 mag = Mag('Merlin','mag',100)
-
-
+ 
+ 
 def room_one_menu():
     time.sleep(1)
     story.room_one()
     room_one_user_input = input('Co chcesz teraz zrobić ? ')
-
+ 
     if room_one_user_input.isnumeric:
         if 5 > int(room_one_user_input) >0:
             match str(room_one_user_input):
@@ -189,11 +194,11 @@ def room_one_menu():
                         else:
                             print('Tylko cyfry jako wybór.')
                             room_one_menu()
-
+ 
                     else:
                         print('Bark dostępnych przedmiotów.')
                         room_one_menu()
-
+ 
                 case '3':
                     print('\nPlayer', player.name,' posiada:\n')
                     player.show_items()
@@ -201,14 +206,15 @@ def room_one_menu():
                         choosen_user_item = input('Czego chcesz uzyc :')
                         match str(choosen_user_item):
                             case '1':
-                                print('Uzywam...', player.player_items[0])
+                                print('Używam ', player.player_items[0])
                                 player.energy_level -= 2
                                 player.player_items.remove(player.player_items[0])
                                 print('Poziom mocy :', player.energy_level)
+                                print('Przejscie do kolejnej komnaty otwarte.')
                                 room_one_menu()
                             case '2':
-
-                                print('Uzywam...', player.player_items[1])
+ 
+                                print('Używam ', player.player_items[1])
                                 room_one_menu()
                     else:
                         print('Musisz poszukać czegoś w komnatach...')
@@ -226,8 +232,8 @@ def room_one_menu():
             room_one_menu()
     else:
         print('Tylko cyfry bohaterze.')
-
-
+ 
+ 
 def room_two_menu():
     time.sleep(1)
     story.room_two()
@@ -238,21 +244,70 @@ def room_two_menu():
             input("\nDowolny klawisz aby wrócić.")
             room_two_menu()
         case '2':
-            pass
-            # zabierz przedmiot
+            print('Masz w komnacie dostepne dwa przedmioty:')
+            second_chamber.show_items()
+            print('\n')
+            if len(second_chamber.items) > 0:
+                choosen_item = input(
+                    'Ktory przedmiot chcesz wziac? Wybór jako cyfra dla przedmiotów w kolejności od góry. ')
+                if choosen_item.isnumeric:
+                    match str(choosen_item):
+                        case '1':
+                            taken_item = second_chamber.items[0]
+                            player.player_items.append(second_chamber.items[0])
+                            second_chamber.items.remove(second_chamber.items[0])
+                            print('Zabierasz ', taken_item)
+                            room_two_menu()
+                        case '2':
+                            taken_item = second_chamber.items[1]
+                            player.player_items.append(second_chamber.items[1])
+                            second_chamber.items.remove(second_chamber.items[1])
+                            print('Zabierasz ', taken_item)
+                            room_two_menu()
+                else:
+                    print('Tylko cyfry jako wybór.')
+                    room_one_menu()
+ 
+            else:
+                print('Bark dostępnych przedmiotów.')
+                room_one_menu()
         case '3':
-            pass
-             # uzyj przedmiot
+            print('\nPlayer', player.name, ' posiada:\n')
+            player.show_items()
+            if len(player.player_items) != 0:
+                choosen_user_item = input('Czego chcesz uzyc :')
+                match str(choosen_user_item):
+                    case '1':
+                        print('Używam ', player.player_items[0])
+                        player.energy_level -= 2
+                        player.player_items.remove(player.player_items[0])
+                        print('Poziom mocy :', player.energy_level)
+                        print('Przejscie do kolejnej komnaty otwarte.')
+                        room_two_menu()
+                    case '2':
+ 
+                        print('Używam ', player.player_items[1])
+                        print('Przejscie do kolejnej komnaty otwarte.')
+                        room_two_menu()
+            else:
+                print('Musisz poszukać czegoś w komnatach...')
+                room_two_menu()
         case '4':
-            room_three_menu()
+            if len(player.player_items) > 0:
+                room_three_menu()
+            else:
+                print('Musisz zabrać stąd coś ze sobą aby móc iśc dalej. :) ')
+                room_two_menu()
         case '5':
             room_one_menu()
-
-
+ 
+ 
 def room_three_menu():
     time.sleep(1)
-    mag.say_instruction()
     story.room_three()
+    print('\n')
+    mag.say_instruction()
+    print('\n')
     room_three_user_input = input('No i? ')
     match str(room_three_user_input):
         case '1':
@@ -260,19 +315,56 @@ def room_three_menu():
             input("\nDowolny klawisz aby wrócić.")
             room_three_menu()
         case '2':
-            pass
-            # zabierz przedmiot
+            print('Masz w komnacie dostepny tylko jeden przedmiot:')
+            last_chamber.show_items()
+            print('\n')
+            if len(last_chamber.items) > 0:
+                choosen_item = input('''
+                Do zebrania pozostał skarb. Przed Tobą drogi graczu już tylko ostatni krok do tego, aby ukończyć grę.
+                ''')
+                if choosen_item.isnumeric:
+                    match str(choosen_item):
+                        case '1':
+                            taken_item = last_chamber.items[0]
+                            player.player_items.append(last_chamber.items[0])
+                            last_chamber.items.remove(last_chamber.items[0])
+                            print('Zabierasz ', taken_item)
+                            print('Wygrales. Koniec gry.')
+                            time.sleep(2)
+                            story.game_over()
+                else:
+                    print('Tylko cyfry jako wybór.')
+                    room_one_menu()
+ 
+            else:
+                print('Bark dostępnych przedmiotów.')
+                room_one_menu()
         case '3':
-            pass
-             # uzyj przedmiot
-        case '4':
-            time.sleep(2)
-            story.game_over()
-
-
+            print('\nPlayer', player.name, ' posiada:\n')
+            player.show_items()
+            if len(player.player_items) != 0:
+                choosen_user_item = input('Czego chcesz uzyc :')
+                match str(choosen_user_item):
+                    case '1':
+                        print('Używam ', player.player_items[0])
+                        player.energy_level -= 2
+                        player.player_items.remove(player.player_items[0])
+                        print('Poziom mocy :', player.energy_level)
+                        room_one_menu()
+                    case '2':
+ 
+                        print('Używam ', player.player_items[1])
+                        room_one_menu()
+            else:
+                print('Musisz poszukać czegoś w komnatach...')
+                room_one_menu()
+            
+ 
+ 
 def main():
-    print('Imie gracza: ')
+ 
     player_name = player.character_name()
+    print('Imie gracza: ', player_name)
     story.start_game()
     player_choice = input('Twój wybór: ')
     if str(player_choice) == 't':
@@ -285,7 +377,8 @@ def main():
     else:
         print('Zła wartość. Spróbuj jeszcze raz. ')
         main()
-
-
+ 
+ 
 if __name__ == '__main__':
     main()
+ 
