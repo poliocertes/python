@@ -35,7 +35,7 @@ Wpis ma zawierać 4 elementy:
 - (1,1,1,1,1,1,1,2,1,1,1)
 - (2,2,2,2)
 - (1,2)
-- (2,1)
+- (1)
 3. Daj link do repozytorium z kodem (publicznie dostępne).
 4. Jeśli do rozwiązania były Ci potrzebne inne materiały niż książka, wrzuć linki.
 
