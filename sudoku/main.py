@@ -16,25 +16,10 @@ class Sudoku_game:
 				['*', '*', '*', '*', '*', '*', '*', '*', '*'],
 				['*', '*', '*', '*', '*', '*', '*', '*', '*'],
 				['*', '*', '*', '*', '*', '*', '*', '*', '*']]
-		self.row_section = (0, 3)
-		self.col_section = (0, 3)
-		'''
-		self.row_section = [(0, 3), (3, 6)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.row_section = [(0, 3), (3, 6)]
-		self.col_section = [(1, 3), (3, 6)]
-		self.row_section = [(0, 3), (3, 6)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.row_section = [(0, 3), (3, 6)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.row_section = [(0, 3), (3, 6)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.row_section = [(0, 3), (3, 6)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.col_section = [(0, 3), (6, 9)]
-		self.col_section = [(0, 3), (6, 9)]
-		'''
+
+		self.board_sections = [[(0, 3), (0, 3)], [(3, 6), (0, 3)], [(6, 9), (0, 3)], [(0, 3), (3, 6)],
+							   [(3, 6), (3, 6)], [(6, 9), (3, 6)], [(0, 3), (6, 9)], [(3, 6), (6, 9)], [(6, 9), (6, 9)]]
+
 	def print_board(self):
 		print("- - - - - - - - - - - - -")
 		for row in range(len(self.game_board)):
@@ -49,25 +34,71 @@ class Sudoku_game:
 					print(str(self.game_board[row][col])+' ', end="")
 		print ("- - - - - - - - - - - - -")
 
-	def fill_section(self):
+	def fill_section(self, i, j, k, l):
 		options_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 		for row in range(len(self.game_board)):
 			for col in range(len(self.game_board)):
-				if row in range(*self.row_section) and col in range(*self.col_section):
+				if row in range(*self.board_sections[i][j]) and col in range(*self.board_sections[k][l]):
 					random_choice = random.choice(options_list)
 					self.game_board[row][col] = random_choice
 					options_list.remove(random_choice)
 
 	def validation(self):
-		pass
+		row_check = []
+		col_check = []
 
+		for row in self.game_board:
+			for element in row:
+				if element  in row_check:
+					print('Error. Duplicate in row.')
+					print('Sudoku not valid!\n')
+					input('Press any key to exit Sudoku')
+					exit()
+				else:
+					row_check.append(element)
+					if len(row_check) == 7:
+						row_check.clear()
+		for col in self.game_board:
+			for element in col:
+				if element in col_check:
+					print('Error. Duplicate in column.')
+					print('Sudoku not valid!\n')
+					input('Press any key to exit Sudoku')
+
+					exit()
+				else:
+					col_check.append(element)
+					if len(col_check) == 6:
+						row_check.clear()
 
 def main():
+	print('Lets play sudoku in terminal.\n')
 	sudoku_game = Sudoku_game()
-	sudoku_game.fill_section()
+	i = 0
+	j = 0
+	k = 0
+	l = 1
+	input('Press enter to fill first section. ')
+	sudoku_game.fill_section(i, j, k, l)
 	sudoku_game.print_board()
+	while i < 8:
+		
+		input('Press enter to fill next section. ')
+		i += 1
+		k += 1
+		sudoku_game.fill_section(i, j, k, l)
+		sudoku_game.print_board()
+	print('Check validation.\n\n 1. Press y to confirm\n 2. Press n to cancel\n')
+	user_choice = input('Validate?  \n')	
 
+
+	match str(user_choice):
+		case 'y':
+			sudoku_game.validation()
+		case 'n':
+			quit()
 
 if __name__ == '__main__':
 	main()
+
 
