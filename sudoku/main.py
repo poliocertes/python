@@ -2,27 +2,35 @@
 # Z2J Python 103-1
 
 import random
-import time
 
 
-option_list = [1,2,3,4,5,6,7,8,9]
+game_board = [
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*'],
+			['*', '*', '*', '*', '*', '*', '*', '*', '*']]
 
-for i in option_list :
-	
+def print_board(board) -> None:
+	print("- - - - - - - - - - - - ")
+	for row in range(len(board)):
+		if row % 3 == 0 and row != 0:
+			print("- - - - - - - - - - - - ")
+		for col in range(len(board[0])):
+			if col % 3 == 0 and col != 0:
+				print(" | ", end="")
 
-import random
-import time
+			if col == 8:
+				print(board[row][col])
+			else:
+				print(str(board[row][col])+' ', end="")
 
+print_board(game_board)
 
-option_list = [1,2,3,4,5,6,7,8,9]
-while len(option_list)  != 0:
-  option_list.pop(random.randrange(len(option_list)))
-  print(option_list)
-	
+# tablica.losowanie bez powtorzen z usuwaniem
+# podzial na sekcje
 
-
-# def main():
-# 	input('Press Enter to begin...')
-
-# if __name__ == '__main__':
-# 	main()
