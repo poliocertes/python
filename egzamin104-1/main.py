@@ -1,61 +1,63 @@
-import random
-from tkinter import Tk
+# sortowanie babelkowe z GUI- python
+# Z2J Python 104-l01
 
-window = Tk()
-window.geometry('800x600')
-window.title('Papier, Kamień, nożyce')
-window.configure(bg='green')
+from tkinter import *
+from tkinter import font as tkFont
 
-window.mainloop()
+class Bubble_sort:
+	def end_menu(self):
+		print('Co dalej ?')
+		print('1. Kolejne sortowanie ')
+		print('2. Wyjście ')
+		user_input = input()
+		match str(user_input):
+			case '1':
+				main()
 
-# items = ['papier', 'kamien', 'nozyce']
-# comp_choice = (random.choice(items))
-# game = True
-# print('Gra w Papier, kamien, nozyce')
-#
-# while game:
-# 	print('MENU')
-# 	print('Masz trzy możliwosci: 1 -> Papier, 2 -> Kamien, 3 -> Nozyce')
-# 	user_choice = input("Dokonaj wyboru: \n")
-# 	if int(user_choice) == 1:
-# 		print('Wybrales papier')
-# 		if comp_choice == 'papier':
-# 			print('Komputer wylosował papier')
-# 			print('REMIS')
-# 		elif comp_choice == 'kamien':
-# 			print('Komputer wylosował kamien')
-# 			print('Wygrywa Gracz')
-# 		else:
-# 			print('Komputer wylosował nozyce')
-# 			print('Wygrywa Komputer')
-# 	elif int(user_choice) == 2:
-# 		print('Wybrales kamien')
-# 		if comp_choice == 'papier':
-# 			print('Komputer wylosował papier')
-# 			print('Wygrywa Komputer')
-# 		elif comp_choice == 'kamien':
-# 			print('Komputer wylosował kamien')
-# 			print('Remis')
-# 		else:
-# 			print('Komputer wylosował nozyce')
-# 			print('Wygrywa Gracz')
-# 	elif int(user_choice) == 3 :
-# 		print('Wybrales nozyce')
-# 		if comp_choice == 'papier':
-# 			print('Komputer wylosował papier')
-# 			print('wygrywa Gracz')
-# 		elif comp_choice == 'kamien':
-# 			print('Komputer wylosował kamien')
-# 			print('Wygrywa Komputer')
-# 		else:
-# 			print('Komputer wylosował nozyce')
-# 			print('Remis')
-#
-# 	print('Chcesz dalej grac?')
-# 	print('1 -> TAK, Kązdy inny klawisz: -> NIE:')
-# 	next_step = input("Moj wybor to: ")
-# 	if next_step == '1':
-# 		game = True
-# 	else:
-# 		game = False
+			case '2':
+				quit()
 
+			case other:
+				print('Zły wybór. Wracamy do gry.')
+				main()
+
+	def draw(self):
+		window = Tk()
+		window.title('Buble Sort')
+		title_frame = Frame(window, height=200)
+		window.geometry('600x400')
+		window.resizable(False, False)
+		window.configure(bg='blue')
+		lbl = Label(window, text='Podaj ciąg liczb do posortowania. Rozdziel je przecinkami.', bg='blue', fg='white', padx=150, pady=30)
+		lbl.grid()
+		title_frame.grid()
+		window.mainloop()
+
+def main():
+	bub_sort = Bubble_sort()
+	bub_sort.draw()
+
+	print('Sortowanie babelkowe Python')
+	items_list = []
+	user_input = input('Podaj liczby które chcesz posortować rozdzielając je przecinkiem: \n').split(',')
+	items_list.extend(user_input)
+	if len(items_list) > 1:
+		items_list = [int(x) for x in items_list]
+		list_lenght = len(items_list) - 1
+		print('\nOriginalna lista: ', items_list)
+		for i in range(0, list_lenght):
+			for j in range(0, list_lenght - i):
+				if items_list[j] > items_list[j + 1]:
+					temporary_list_item_value = items_list[j]
+					items_list[j] = items_list[j + 1]
+					items_list[j + 1] = temporary_list_item_value
+		print('Posortowana lista: ', items_list, '\n')
+		bub_sort.end_menu()
+	else:
+		print('Lista jest pusta.')
+		print('Musisz dodać przynajmniej dwie liczby. \n')
+		main()
+
+
+if __name__ == '__main__':
+	main()
