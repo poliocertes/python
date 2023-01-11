@@ -4,6 +4,7 @@
 from tkinter import *
 from tkinter import font as tkFont
 
+
 class Bubble_sort:
 	def end_menu(self):
 		print('Co dalej ?')
@@ -32,6 +33,7 @@ class Bubble_sort:
 		lbl.grid()
 		title_frame.grid()
 		window.mainloop()
+
 
 def main():
 	bub_sort = Bubble_sort()
