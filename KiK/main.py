@@ -9,6 +9,7 @@ window_size = str(width) + 'x' + str(height) + '+' + str(500) + '+' + str(500)
 res_table = [['', '', ''], ['', '', ''], ['', '', '']]
 counter = 0
 
+
 class Game:
 
 	def __init__(self):
@@ -25,14 +26,12 @@ class Game:
 		global counter
 		if counter == 0:
 			if va == 0:
-				print("0")
 				counter += 1
 			elif va == 1:
-				print("X")
 				counter += 1
 		elif counter > 0:
 			counter += 1
-			print(counter)  
+			print(counter)
 
 	def check_results(self):
 		pass
