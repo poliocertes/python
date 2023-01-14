@@ -4,8 +4,14 @@ from tkinter import *
 
 window = Tk()
 window.title('Papier, kamień, nożyce')
-window.geometry('800x600')
+window.geometry('600x600')
+window.configure(bg='green')
+window.resizable(False, False)
+lbl = Label(window, text='Papier, kamień, nożyce', bg='green', fg='white', pady=30)
+lbl.pack()
 window.mainloop()
+
+
 
 # items = ['papier', 'kamien', 'nozyce']
 # comp_choice = (random.choice(items))
