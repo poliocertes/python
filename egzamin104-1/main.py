@@ -6,32 +6,18 @@ from tkinter import font as tkFont
 
 
 class Bubble_sort:
-	# def end_menu(self):
-	# 	print('Co dalej ?')
-	# 	print('1. Kolejne sortowanie ')
-	# 	print('2. Wyjście ')
-	# 	user_input = input()
-	# 	match str(user_input):
-	# 		case '1':
-	# 			main()
-
-	# 		case '2':
-	# 			quit()
-
-	# 		case other:
-	# 			print('Zły wybór. Wracamy do gry.')
-	# 			main()
-
 	def draw(self):
 		window = Tk()
 		window.title('Buble Sort')
-		title_frame = Frame(window, height=200, width=475)
-		window.geometry('600x400')
+		title_frame = Frame(window, height=200, width=555, bg='green')
+		window.geometry('800x600')
 		window.resizable(False, False)
 		window.configure(bg='blue')
 		lbl = Label(window, text='Podaj ciąg liczb do posortowania. Rozdziel je przecinkami.', bg='blue', fg='white', padx=150, pady=30)
+		input_entry = Entry(title_frame)
 		lbl.grid()
 		title_frame.grid()
+		input_entry.grid()
 		window.mainloop()
 
 
