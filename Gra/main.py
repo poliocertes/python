@@ -28,7 +28,6 @@ PADDLE_WIDTH = 200
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Brick breaker')
 pygame.display.flip()
-keys = pygame.key.get_pressed()
 picture = 'assets/background.png'
 
 
@@ -92,14 +91,13 @@ class Game_ball:
 
 class Brick:
 	def __init__(self):
-		self.width = 75
-		self.height = 10
+		self.width = 150
+		self.height = 20
 		self.x_cord = 15
 		self.y_cord = 15
 		self.cols = 16
 		self.rows = 25
 		self.colors = [GRAY, GREEN, ORANGE, RED, LIGHTBLUE]
-		self.color = random.choice(self.colors)
 		self.single_brick = []
 		self.bricks = []
 		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
@@ -110,7 +108,7 @@ class Brick:
 				brick_x_cord = col * self.width
 				brick_y_cord = row * self.height
 				item = pygame.Rect(brick_x_cord, brick_y_cord, self.width, self.height)
-				single_brick = [item, self.color]
+				single_brick = [item]
 				bricks_row.append(single_brick)
 			self.bricks.append(bricks_row)
 
@@ -118,7 +116,8 @@ class Brick:
 		self.hitbox = pygame.Rect (self.x_cord , self.y_cord , self.width , self.height)
 		for row in self.bricks:
 			for block in row:
-				pygame.draw.rect(screen, self.color, block[0])
+				color = random.choice(self.colors)
+				pygame.draw.rect(screen, color, block[0])
 				pygame.draw.rect(screen, 'black', (block[0]), 2)
 
 
@@ -127,6 +126,7 @@ def main():
 	clock = pygame.time.Clock()
 	paddle = Paddle(WIDTH / 2, HEIGHT - 30, PADDLE_WIDTH, PADDLE_HEIGHT)
 	game_ball = Game_ball(WIDTH / 2, HEIGHT - 45)
+
 	clock.tick(FPS)
 	brick_breaker = Brick()
 
@@ -136,13 +136,11 @@ def main():
 		game_ball.draw_ball()
 		game_ball.move()
 		brick_breaker.draw_bricks()
+		keys = pygame.key.get_pressed()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				running = False
 				break
-
-		for item in brick_breaker.bricks:
-			print(item)
 
 		if keys[pygame.K_RIGHT]:
 			paddle.move_right()
