@@ -60,8 +60,8 @@ class Game_ball:
 	BALL_VEL = 5
 
 	def __init__(self, x_cord, y_cord):
-		self.x_cord = x_cord
-		self.y_cord = y_cord
+		self.x_cord = self.start_x = x_cord
+		self.y_cord = self.start_y = y_cord
 		self.width = 10
 		self.height = 10
 		self.x_vel = self.BALL_VEL
