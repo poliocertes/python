@@ -28,7 +28,7 @@ PADDLE_WIDTH = 200
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Brick breaker')
 pygame.display.flip()
-picture = 'assets/background.png'
+picture = 'assets/stars.png'
 
 
 # class Paddle
@@ -41,9 +41,10 @@ class Paddle:
 		self.y_cord = y
 		self.width = width
 		self.height = height
-		self.hitbox = pygame.Rect (self.x_cord , self.y_cord , self.width , self.height)
+		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
 	def draw(self):  # paddle draw function
+		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord - self.width / 2, self.y_cord, self.width, self.height))
 
 	def move_left(self):  # move a paddle left
@@ -67,9 +68,10 @@ class Game_ball:
 		self.x_vel = self.BALL_VEL
 		self.y_vel = 9
 		self.color = YELLOW
-		self.hitbox = pygame.Rect(self.x_cord , self.y_cord , self.width , self.height)
+		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
 	def draw_ball(self):
+		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 		pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
 
 	def move(self):
@@ -91,34 +93,7 @@ class Game_ball:
 
 class Brick:
 	def __init__(self):
-		self.width = 150
-		self.height = 20
-		self.x_cord = 15
-		self.y_cord = 15
-		self.cols = 16
-		self.rows = 25
-		self.colors = [GRAY, GREEN, ORANGE, RED, LIGHTBLUE]
-		self.single_brick = []
-		self.bricks = []
-		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
-
-		for row in range(self.rows):
-			bricks_row = []
-			for col in range(self.cols):
-				brick_x_cord = col * self.width
-				brick_y_cord = row * self.height
-				item = pygame.Rect(brick_x_cord, brick_y_cord, self.width, self.height)
-				single_brick = [item]
-				bricks_row.append(single_brick)
-			self.bricks.append(bricks_row)
-
-	def draw_bricks(self):
-		self.hitbox = pygame.Rect (self.x_cord , self.y_cord , self.width , self.height)
-		for row in self.bricks:
-			for block in row:
-				color = random.choice(self.colors)
-				pygame.draw.rect(screen, color, block[0])
-				pygame.draw.rect(screen, 'black', (block[0]), 2)
+		pass
 
 
 def main():
@@ -135,7 +110,6 @@ def main():
 		paddle.draw()
 		game_ball.draw_ball()
 		game_ball.move()
-		brick_breaker.draw_bricks()
 		keys = pygame.key.get_pressed()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -147,10 +121,10 @@ def main():
 		if keys[pygame.K_LEFT]:
 			paddle.move_left()
 
-
-
 		pygame.display.update()
 
+		if game_ball.hitbox.colliderect(paddle.hitbox):
+			print('OOO')
 
 if __name__ == "__main__":
 	main()
