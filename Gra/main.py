@@ -3,12 +3,12 @@ import random
 import time
 
 # game init
-pygame.init ( )
+pygame.init()
 
 # define screen settings
 HEIGHT = 800
 WIDTH = 1200
-FPS = 480
+FPS = 100
 
 # define colours
 BLUE = (0, 0, 255)
@@ -23,12 +23,18 @@ LIGHTBLUE = (0, 176, 240)
 PADDLE_HEIGHT = 10
 PADDLE_WIDTH = 200
 
-
 # pygame settings
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('Brick breaker')
 pygame.display.flip()
 picture = 'assets/stars.png'
+
+
+class Board:
+	def __init__(self, width, height):
+		self.width = width
+		self.height = height
+		self.background = 'assets/stars.png'
 
 
 # class Paddle
@@ -57,7 +63,7 @@ class Paddle:
 
 
 # class game ball
-class Game_ball:
+class GameBall:
 	BALL_VEL = 5
 
 	def __init__(self, x_cord, y_cord):
@@ -92,24 +98,33 @@ class Game_ball:
 
 
 class Brick:
-	def __init__(self):
+
+	def __init__(self, x_cord, y_cord, width, height, color):
+		self.x_cord = x_cord
+		self.y_cord = y_cord
+		self.width = width
+		self.height = height
+		self.color = color
+
+	def draw(self):
 		pass
 
 
 def main():
+	score = 0
 	running = True
 	clock = pygame.time.Clock()
 	paddle = Paddle(WIDTH / 2, HEIGHT - 30, PADDLE_WIDTH, PADDLE_HEIGHT)
-	game_ball = Game_ball(WIDTH / 2, HEIGHT - 45)
+	gameball = GameBall(WIDTH / 2, HEIGHT - 45)
 
 	clock.tick(FPS)
-	brick_breaker = Brick()
+	brick = Brick()
 
 	while running:
-		screen.blit(pygame.image.load (picture).convert(), (0, 0))
+		screen.blit(pygame.image.load(picture).convert(), (0, 0))
 		paddle.draw()
-		game_ball.draw_ball()
-		game_ball.move()
+		gameball.draw_ball()
+		gameball.move()
 		keys = pygame.key.get_pressed()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -123,8 +138,6 @@ def main():
 
 		pygame.display.update()
 
-		if game_ball.hitbox.colliderect(paddle.hitbox):
-			print('OOO')
 
-if __name__ == "__main__":
+if __name__ == "__main__" :
 	main()
