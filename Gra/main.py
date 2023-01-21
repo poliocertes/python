@@ -1,6 +1,7 @@
+from tkinter import Label
+
 import pygame
 import random
-import time
 
 # game init
 pygame.init()
@@ -8,7 +9,7 @@ pygame.init()
 # define screen settings
 HEIGHT = 800
 WIDTH = 1200
-FPS = 100
+FPS = 240
 
 # define colours
 BLUE = (0, 0, 255)
@@ -29,12 +30,7 @@ pygame.display.set_caption('Brick breaker')
 pygame.display.flip()
 picture = 'assets/stars.png'
 
-
-class Board:
-	def __init__(self, width, height):
-		self.width = width
-		self.height = height
-		self.background = 'assets/stars.png'
+Label(screen, "Hello World", 100, 100, 36)
 
 
 # class Paddle
@@ -51,14 +47,14 @@ class Paddle:
 
 	def draw(self):  # paddle draw function
 		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
-		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord - self.width / 2, self.y_cord, self.width, self.height))
+		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
 
 	def move_left(self):  # move a paddle left
-		if self.x_cord > self.width / 2 + 10:
+		if self.x_cord > 5:
 			self.x_cord -= self.PADDLE_VEL
 
 	def move_right(self):  # move a paddle right
-		if self.x_cord + self.width < WIDTH + self.width / 2 - 10:
+		if self.x_cord + self.width < WIDTH  - 5:
 			self.x_cord += self.PADDLE_VEL
 
 
@@ -72,12 +68,17 @@ class GameBall:
 		self.width = 10
 		self.height = 10
 		self.x_vel = self.BALL_VEL
-		self.y_vel = 9
+		self.y_vel = 8
 		self.color = YELLOW
 		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+		self.lives = 5
+		self.score = 0
 
-	def draw_ball(self):
+	def draw_ball(self, paddle):
 		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+		if self.hitbox.colliderect(paddle.hitbox):
+			self.y_vel *= -1
+
 		pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
 
 	def move(self):
@@ -98,33 +99,46 @@ class GameBall:
 
 
 class Brick:
+	
+	def __init__(self):
+		self.x_cord = 5
+		self.y_cord = 5
+		self.width = 120
+		self.height = 20
+		self.cols = 10 
+		self.rows = 6
+		self.colors = ["sky blue", "tomato", "lime green","yellow"]
+		#self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+		self.bricks = []
 
-	def __init__(self, x_cord, y_cord, width, height, color):
-		self.x_cord = x_cord
-		self.y_cord = y_cord
-		self.width = width
-		self.height = height
-		self.color = color
+	def create_bricks_wall(self):
+		for row in range(self.rows):
+			for col in range(self.cols):
+				self.color = random.choice(self.colors)
+				single_block = pygame.Rect(col * self.width, row * self.height, self.width, self.height)
+				self.bricks.append(single_block)
 
-	def draw(self):
-		pass
+	def draw(self, gameball):
+		for brick in self.bricks:
+			pygame.draw.rect(screen, self.color, brick)
+			pygame.draw.rect(screen, 'black', brick, 2)
 
 
 def main():
-	score = 0
 	running = True
 	clock = pygame.time.Clock()
 	paddle = Paddle(WIDTH / 2, HEIGHT - 30, PADDLE_WIDTH, PADDLE_HEIGHT)
 	gameball = GameBall(WIDTH / 2, HEIGHT - 45)
-
-	clock.tick(FPS)
 	brick = Brick()
+	brick.create_bricks_wall()
+	clock.tick(FPS)
 
 	while running:
-		screen.blit(pygame.image.load(picture).convert(), (0, 0))
+		screen.blit(pygame.image.load(picture).convert(),(0, 0))
 		paddle.draw()
-		gameball.draw_ball()
+		gameball.draw_ball(paddle)
 		gameball.move()
+		brick.draw(gameball)
 		keys = pygame.key.get_pressed()
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
