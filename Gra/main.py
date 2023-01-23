@@ -44,8 +44,8 @@ class Paddle(object):
 
 # gameball class
 class GameBall(object):
-
     COLOR = (255, 140, 0)
+
     def __init__(self, x, y, radius):
         self.x_cord = self.start_x = x
         self.y_cord = self.start_y = y
@@ -69,6 +69,8 @@ class GameBall(object):
 class Brick(object):
 
     def __init__(self):
+        self.x = 5
+        self.y = 5
         self.width = 100
         self.height = 20
         self.color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
@@ -76,12 +78,14 @@ class Brick(object):
         self.cols = 6
         self.bricks = []
 
-    def create_brick_wall(self): # brickwall creating
-        pass
+    def draw(self):
+        for y in range(self.rows):
+            for x in range(self.cols):
+                single_brick = pygame.Rect(x, y, self.width, self.height)
+                self.bricks.append(single_brick)
 
-    def draw(self): # brickwall draw
-        pygame.draw.rect(screen, self.color, pygame.Rect(5, 5, self.width, self.height))
-
+        for single_brick in self.bricks:
+            pygame.draw.rect(screen, self.color, single_brick, 1)
 
 
 # main function
@@ -89,18 +93,16 @@ def main():
     running = True
     clock = pygame.time.Clock()
     paddle = Paddle(WIDTH//2 - 50, (HEIGHT - 10), PADDLE_WIDTH, PADDLE_HEIGHT)
-    gameball = GameBall(WIDTH // 2, HEIGHT - 35 , BALL_RADIUS)
+    gameball = GameBall(WIDTH // 2, HEIGHT - 55 , BALL_RADIUS)
     lives = 5
     brick = Brick()
-    brick.create_brick_wall()
-
-    while running: # main loop
+    brick.draw()
+    while running:  # main loop
         screen.blit(bg, (0, 0))
         clock.tick(FPS)
         paddle.draw()
         gameball.draw()
         gameball.move()
-        brick.draw()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -114,7 +116,7 @@ def main():
         if keys[pygame.K_RIGHT]:
             paddle.move_right()
 
-        if gameball.y_cord + gameball.radius >= HEIGHT:
+        if gameball.y_cord + gameball.radius >= HEIGHT - 5:
             gameball.y_vel *= -1
             lives -= 1
             print(lives)
@@ -129,9 +131,6 @@ def main():
 
         if paddle.x_cord + paddle.width >= gameball.x_cord > paddle.x_cord and paddle.y_cord < gameball.y_cord <= paddle.y_cord + paddle.height:
             gameball.y_vel *= -1
-
-        # if gameball.y_cord <= brick.y_cord + brick.height and brick.x_cord + brick.width > gameball.x_cord > brick.x_cord :
-        #     print('gol')
 
         pygame.display.update()
 
