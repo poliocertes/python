@@ -23,7 +23,6 @@ score2 = 0
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('PONG')
 pygame.display.flip()
-keys = pygame.key.get_pressed()
 
 
 class Paddle_one:
