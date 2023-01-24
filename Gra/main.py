@@ -31,6 +31,7 @@ class Paddle(object):
         self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
     def draw(self):
+        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
         pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
 
     def move_left(self):
@@ -44,33 +45,32 @@ class Paddle(object):
 
 # gameball class
 class GameBall(object):
-    COLOR = (255, 140, 0)
 
-    def __init__(self, x, y, radius):
-        self.x_cord = self.start_x = x
-        self.y_cord = self.start_y = y
-        self.radius = radius
-        self.x_vel = 4
-        self.y_vel = 5
+    def __init__(self, x, y):
+        self.x_cord = x
+        self.y_cord = y
+        self.width = 7
+        self.height = 7
+        self.color = (255, 140, 0)
+        self.x_vel = 2
+        self.y_vel = 3
+        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
     def draw(self):
-        pygame.draw.circle(screen, self.COLOR, (self.x_cord, self.y_cord), self.radius)
+        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+        pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
 
     def move(self):
         self.x_cord += self.x_vel
         self.y_cord += self.y_vel
-
-    def reset(self):
-        self.x_cord = self.start_x
-        self.y_cord = self.start_y
 
 
 # brick class
 class Brick(object):
 
     def __init__(self):
-        self.x = 5
-        self.y = 5
+        self.x_cord = 5
+        self.y_cord = 5
         self.width = 100
         self.height = 20
         self.color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
@@ -78,14 +78,15 @@ class Brick(object):
         self.cols = 6
         self.bricks = []
 
-    def draw(self):
+    def create_wall(self):
         for y in range(self.rows):
             for x in range(self.cols):
                 single_brick = pygame.Rect(x, y, self.width, self.height)
                 self.bricks.append(single_brick)
 
+    def draw(self):
         for single_brick in self.bricks:
-            pygame.draw.rect(screen, self.color, single_brick, 1)
+            pygame.draw.rect(screen, self.color, single_brick)
 
 
 # main function
@@ -93,16 +94,18 @@ def main():
     running = True
     clock = pygame.time.Clock()
     paddle = Paddle(WIDTH//2 - 50, (HEIGHT - 10), PADDLE_WIDTH, PADDLE_HEIGHT)
-    gameball = GameBall(WIDTH // 2, HEIGHT - 55 , BALL_RADIUS)
+    gameball = GameBall(WIDTH // 2, HEIGHT - 55)
     lives = 5
     brick = Brick()
-    brick.draw()
+    brick.create_wall()
     while running:  # main loop
-        screen.blit(bg, (0, 0))
+        # screen.blit(bg, (0, 0))
+        screen.fill(BLUE)
         clock.tick(FPS)
         paddle.draw()
         gameball.draw()
         gameball.move()
+        brick.draw()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -116,14 +119,12 @@ def main():
         if keys[pygame.K_RIGHT]:
             paddle.move_right()
 
-        if gameball.y_cord + gameball.radius >= HEIGHT - 5:
+        if gameball.y_cord >= HEIGHT:
             gameball.y_vel *= -1
-            lives -= 1
-            print(lives)
-        if gameball.y_cord - gameball.radius <= 2:
+        if gameball.y_cord <= 2:
             gameball.y_vel *= -1
 
-        if gameball.x_cord + gameball.radius * 2 >= WIDTH:
+        if gameball.x_cord >= WIDTH:
             gameball.x_vel *= -1
 
         if gameball.x_cord <= 1:
