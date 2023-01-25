@@ -1,5 +1,6 @@
 import pygame
 import random
+from random import randrange
 
 pygame.init()
 
@@ -78,15 +79,12 @@ class Brick(object):
         self.cols = 6
         self.bricks = []
 
-    def create_wall(self):
-        for y in range(self.rows):
-            for x in range(self.cols):
-                single_brick = pygame.Rect(x, y, self.width, self.height)
-                self.bricks.append(single_brick)
 
     def draw(self):
-        for single_brick in self.bricks:
-            pygame.draw.rect(screen, self.color, single_brick)
+        block_list = [pygame.Rect(10 + 120 * i, 10 + 70 * j, 100, 50) for i in range(10) for j in range(4)]
+        color_list = [(randrange(50, 255), randrange(50, 255), randrange(50, 255)) for i in range(10) for j in range(4)]
+        [pygame.draw.rect(screen, color_list[color], block) for color, block in enumerate(block_list)]
+
 
 
 # main function
@@ -97,7 +95,6 @@ def main():
     gameball = GameBall(WIDTH // 2, HEIGHT - 55)
     lives = 5
     brick = Brick()
-    brick.create_wall()
     while running:  # main loop
         # screen.blit(bg, (0, 0))
         screen.fill(BLUE)
