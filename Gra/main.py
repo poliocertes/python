@@ -90,14 +90,14 @@ class Brick(object):
 # main function
 def main():
     running = True
+    lives = 5
+    score = 12
     clock = pygame.time.Clock()
     paddle = Paddle(WIDTH//2 - 50, (HEIGHT - 100), PADDLE_WIDTH, PADDLE_HEIGHT)
     gameball = GameBall(WIDTH // 2, HEIGHT - 125)
-    lives = 5
-    score = 12
     brick = Brick()
     while running:  # main loop
-        # screen.blit(bg, (0, 0))
+
         screen.fill(BLUE)
         clock.tick(FPS)
         paddle.draw()
@@ -105,8 +105,8 @@ def main():
         gameball.move()
         brick.draw()
         pygame.draw.rect(screen, 'white', pygame.Rect(0, 740, 800, 5))
-        score = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Score: {score}', True, (255, 255, 255))
-        lives = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Lives: {lives}', True, (255, 255, 255))
+        show_score = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Score: {score}', True, (255, 255, 255))
+        show_lives = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Lives: {lives}', True, (255, 255, 255))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -121,6 +121,7 @@ def main():
 
         if gameball.y_cord >= HEIGHT - 65:
             gameball.y_vel *= -1
+            lives -= 1
         if gameball.y_cord <= 2:
             gameball.y_vel *= -1
 
@@ -134,11 +135,12 @@ def main():
             for i in range(brick.rows):
                 if gameball.y_cord < brick.x_cord + brick.height:
                     print('ttt')
-
+        if lives < 1:
+            print('game over')
         if paddle.x_cord + paddle.width >= gameball.x_cord > paddle.x_cord and paddle.y_cord < gameball.y_cord +gameball.height:
             gameball.y_vel *= -1
-        screen.blit(score, (15, 760))
-        screen.blit(lives, (650, 760))
+        screen.blit(show_score, (15, 760))
+        screen.blit(show_lives, (650, 760))
         pygame.display.update()
 
 
