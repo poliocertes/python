@@ -81,8 +81,9 @@ class Brick(object):
         self.bricks = []
         self.color_list = [(randrange(100, 255), randrange(100, 255), randrange(100, 255)) for i in range(self.cols) for j in
                       range(self.rows)]
+        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
-    def draw(self):
+    def draw(self, gameball):
         block_list = [pygame.Rect(self.x_cord + (self.width + 10) * i, self.y_cord + (self.height + 10) * j, self.width, self.height) for i in range(self.cols) for j in range(self.rows)]
         [pygame.draw.rect(screen, self.color_list[color], block) for color, block in enumerate(block_list)]
 
@@ -103,7 +104,7 @@ def main():
         paddle.draw()
         gameball.draw()
         gameball.move()
-        brick.draw()
+        brick.draw(gameball)
         pygame.draw.rect(screen, 'white', pygame.Rect(0, 740, 800, 5))
         show_score = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Score: {score}', True, (255, 255, 255))
         show_lives = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Lives: {lives}', True, (255, 255, 255))
@@ -131,10 +132,7 @@ def main():
         if gameball.x_cord <= 1:
             gameball.x_vel *= -1
 
-        for j in range(brick.cols):
-            for i in range(brick.rows):
-                if gameball.y_cord < brick.x_cord + brick.height:
-                    print('ttt')
+
         if lives < 1:
             print('game over')
         if paddle.x_cord + paddle.width >= gameball.x_cord > paddle.x_cord and paddle.y_cord < gameball.y_cord +gameball.height:
