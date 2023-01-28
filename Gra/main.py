@@ -1,7 +1,6 @@
 from tkinter import Label
 
 import pygame
-import random
 from random import randrange
 
 pygame.init()
@@ -56,7 +55,7 @@ class GameBall:
         self.height = 15
         self.color = (255, 140, 0)
         self.x_vel = 2
-        self.y_vel = 3
+        self.y_vel = 4
         self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
     def draw(self):
@@ -87,11 +86,10 @@ class Brick(object):
             pygame.draw.rect(screen, self.color_list[color], block)
         for i in range(self.cols):
             for j in range(self.rows):
-                for block in self.block_list:
-                    if block.y + block.height >= gameball.y_cord:
-                        gameball.x_vel *= -1
-                        self.block_list.remove(block)
-
+                for item in self.block_list:
+                    if item.y + item.height >= gameball.y_cord and item.x + item.width > gameball.x_cord  > item.x:
+                        gameball.y_vel *= -1
+                        self.block_list.remove(item)
 
 
 # main function
@@ -150,9 +148,6 @@ def main():
 
         if paddle.x_cord + paddle.width >= gameball.x_cord > paddle.x_cord and paddle.y_cord < gameball.y_cord + gameball.height:
             gameball.y_vel *= -1
-
-        if gameball.y_cord <= brick.y_cord:
-            print('i')
 
         screen.blit(show_score, (15, 760))
         screen.blit(show_lives, (650, 760))
