@@ -17,7 +17,7 @@ BALL_RADIUS = 5
 
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
 pygame.display.set_caption('BRICKS BREAKER')
-bg = pygame.image.load('assets/sky.png')
+bg = pygame.image.load('assets/sky.png').convert()
 
 
 # paddle class
@@ -37,11 +37,11 @@ class Paddle(object):
         pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
 
     def move_left(self):
-        if self.x_cord > 10:
+        if self.x_cord > 5:
             self.x_cord -= self.vel
 
     def move_right(self):
-        if self.x_cord + self.width < WIDTH - 10:
+        if self.x_cord + self.width < WIDTH - 5:
             self.x_cord += self.vel
 
 
@@ -101,11 +101,12 @@ def main():
     clock = pygame.time.Clock()
     paddle = Paddle(WIDTH//2 - 50, (HEIGHT - 100), PADDLE_WIDTH, PADDLE_HEIGHT)
     gameball = GameBall(WIDTH // 2, HEIGHT - 125)
-    game_over_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Game over. Press 'q' to quit the game.", True, (255, 255, 255))
-    win_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Winner. Press 'r' to reset or 'q' to exit.", True, (255, 255, 255))
+    game_over_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Game over. Press 'q' to exit.", True, (255, 255, 255))
+    win_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "You win. Press 'r' to reset or 'q' to exit. ", True, (255, 255, 255))
     brick = Brick()
     while running:  # main loop
-        screen.fill(BLUE)
+        screen.blit(bg, (0, 0))
+        # screen.fill(BLUE)
         clock.tick(FPS)
         paddle.draw()
         gameball.draw()
@@ -149,7 +150,7 @@ def main():
             continue
 
         if brick.score == 24:
-            screen.blit(win_image, (150, 300))
+            screen.blit(win_image, (105, 300))
             gameball.x_cord = WIDTH / 2
             gameball.y_cord = HEIGHT - 130
             pygame.display.update()
