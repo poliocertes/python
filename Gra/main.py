@@ -85,9 +85,13 @@ class Brick(object):
     def draw(self, gameball):
         for color, block in enumerate(self.block_list):
             pygame.draw.rect(screen, self.color_list[color], block)
+        for i in range(self.cols):
+            for j in range(self.rows):
+                for block in self.block_list:
+                    if block.y + block.height >= gameball.y_cord:
+                        gameball.x_vel *= -1
+                        self.block_list.remove(block)
 
-        for block in enumerate(self.block_list):
-            print('f')
 
 
 # main function
