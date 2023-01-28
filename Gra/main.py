@@ -12,7 +12,7 @@ BLUE = (0, 0, 255)
 
 FPS = 120
 PADDLE_HEIGHT = 10
-PADDLE_WIDTH = 120
+PADDLE_WIDTH = 150
 BALL_RADIUS = 5
 
 screen = pygame.display.set_mode([WIDTH, HEIGHT])
@@ -77,6 +77,7 @@ class Brick(object):
         self.height = 50
         self.rows = 4
         self.cols = 6
+        self.score = 0
         self.color_list = [(randrange(100, 255), randrange(100, 255), randrange(100, 255)) for i in range(self.cols) for j in
                       range(self.rows)]
         self.block_list = [pygame.Rect(self.x_cord + (self.width + 11) * i, self.y_cord + (self.height + 11) * j, self.width, self.height) for i in range(self.cols) for j in range(self.rows)]
@@ -88,6 +89,7 @@ class Brick(object):
             for j in range(self.rows):
                 for item in self.block_list:
                     if item.y + item.height >= gameball.y_cord and item.x + item.width > gameball.x_cord  > item.x:
+                        self.score += 1
                         gameball.y_vel *= -1
                         self.block_list.remove(item)
 
@@ -96,11 +98,11 @@ class Brick(object):
 def main():
     running = True
     lives = 5
-    score = 0
     clock = pygame.time.Clock()
     paddle = Paddle(WIDTH//2 - 50, (HEIGHT - 100), PADDLE_WIDTH, PADDLE_HEIGHT)
     gameball = GameBall(WIDTH // 2, HEIGHT - 125)
-    game_over_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Game over. Press SPACE to exit.", True, (255, 255, 255))
+    game_over_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Game over. Press 'q' to quit the game.", True, (255, 255, 255))
+    win_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Winner. Press 'r' to reset or 'q' to exit.", True, (255, 255, 255))
     brick = Brick()
     while running:  # main loop
         screen.fill(BLUE)
@@ -110,7 +112,7 @@ def main():
         gameball.move()
         brick.draw(gameball)
         pygame.draw.rect(screen, 'white', pygame.Rect(0, 740, 800, 5))
-        show_score = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Score: {score}', True, (255, 255, 255))
+        show_score = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Score: {brick.score}', True, (255, 255, 255))
         show_lives = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Lives: {lives}', True, (255, 255, 255))
 
         for event in pygame.event.get():
@@ -142,7 +144,18 @@ def main():
             gameball.x_cord = WIDTH / 2
             gameball.y_cord = HEIGHT - 130
             pygame.display.update()
-            if keys[pygame.K_SPACE]:
+            if keys[pygame.K_q]:
+                pygame.quit()
+            continue
+
+        if brick.score == 24:
+            screen.blit(win_image, (150, 300))
+            gameball.x_cord = WIDTH / 2
+            gameball.y_cord = HEIGHT - 130
+            pygame.display.update()
+            if keys[pygame.K_r]:
+                main()
+            if keys[pygame.K_q]:
                 pygame.quit()
             continue
 
