@@ -47,7 +47,7 @@ class Paddle(object):
 
 
 # gameball class
-class GameBall(object):
+class GameBall:
 
     def __init__(self, x, y):
         self.x_cord = x
@@ -72,33 +72,35 @@ class GameBall(object):
 class Brick(object):
 
     def __init__(self):
-        self.x_cord = 15
-        self.y_cord = 15
+        self.x_cord = 12
+        self.y_cord = 12
         self.width = 120
         self.height = 50
         self.rows = 4
         self.cols = 6
-        self.bricks = []
         self.color_list = [(randrange(100, 255), randrange(100, 255), randrange(100, 255)) for i in range(self.cols) for j in
                       range(self.rows)]
-        self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
+        self.block_list = [pygame.Rect(self.x_cord + (self.width + 11) * i, self.y_cord + (self.height + 11) * j, self.width, self.height) for i in range(self.cols) for j in range(self.rows)]
 
     def draw(self, gameball):
-        block_list = [pygame.Rect(self.x_cord + (self.width + 10) * i, self.y_cord + (self.height + 10) * j, self.width, self.height) for i in range(self.cols) for j in range(self.rows)]
-        [pygame.draw.rect(screen, self.color_list[color], block) for color, block in enumerate(block_list)]
+        for color, block in enumerate(self.block_list):
+            pygame.draw.rect(screen, self.color_list[color], block)
+
+        for block in enumerate(self.block_list):
+            print('f')
 
 
 # main function
 def main():
     running = True
     lives = 5
-    score = 12
+    score = 0
     clock = pygame.time.Clock()
     paddle = Paddle(WIDTH//2 - 50, (HEIGHT - 100), PADDLE_WIDTH, PADDLE_HEIGHT)
     gameball = GameBall(WIDTH // 2, HEIGHT - 125)
+    game_over_image = pygame.font.Font.render(pygame.font.SysFont("", 50), "Game over. Press SPACE to exit.", True, (255, 255, 255))
     brick = Brick()
     while running:  # main loop
-
         screen.fill(BLUE)
         clock.tick(FPS)
         paddle.draw()
@@ -108,6 +110,7 @@ def main():
         pygame.draw.rect(screen, 'white', pygame.Rect(0, 740, 800, 5))
         show_score = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Score: {score}', True, (255, 255, 255))
         show_lives = pygame.font.Font.render(pygame.font.SysFont('Arial Bold', 40), f'Lives: {lives}', True, (255, 255, 255))
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -132,11 +135,21 @@ def main():
         if gameball.x_cord <= 1:
             gameball.x_vel *= -1
 
-
         if lives < 1:
-            print('game over')
-        if paddle.x_cord + paddle.width >= gameball.x_cord > paddle.x_cord and paddle.y_cord < gameball.y_cord +gameball.height:
+            screen.blit(game_over_image, (120, 300))
+            gameball.x_cord = WIDTH / 2
+            gameball.y_cord = HEIGHT - 130
+            pygame.display.update()
+            if keys[pygame.K_SPACE]:
+                pygame.quit()
+            continue
+
+        if paddle.x_cord + paddle.width >= gameball.x_cord > paddle.x_cord and paddle.y_cord < gameball.y_cord + gameball.height:
             gameball.y_vel *= -1
+
+        if gameball.y_cord <= brick.y_cord:
+            print('i')
+
         screen.blit(show_score, (15, 760))
         screen.blit(show_lives, (650, 760))
         pygame.display.update()
