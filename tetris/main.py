@@ -1,5 +1,6 @@
 from settings import *
 from classes.gameboard import GameBoard
+from classes.block import Block
 import pygame as pg
 
 
@@ -15,18 +16,6 @@ screen = pg.display.set_mode([WINDOW_WIDTH, WINDOW_HEIGHT])
 pg.display.set_caption('Tetris')
 
 
-class Block(GameBoard):
-	def __init__(self, x, y, width, height):
-		super().__init__(x, y, width, height)
-		pass
-
-	def rotate(self):
-		pass
-
-	def move(self):
-		pass
-
-
 def main():
 	running = True
 	game_board = GameBoard()
@@ -34,7 +23,7 @@ def main():
 	while running:
 		screen.fill('blue')
 		game_board.draw_grid()
-		show_title = pg.font.Font.render(pg.font.SysFont('Arial', 30), 'TETRIS', True, (255, 255, 255))
+		show_title = pg.font.Font.render(pg.font.SysFont('Arial', 50), 'TETRIS', True, (255, 255, 255))
 		show_score = pg.font.Font.render(pg.font.SysFont('Arial', 30), f'Score: {score}', True, (255, 255, 255))
 		show_next = pg.font.Font.render(pg.font.SysFont('Arial', 30), 'Next', True, (255, 255, 255))
 
@@ -56,9 +45,10 @@ def main():
 		if keys[pg.K_RIGHT]:
 			print('RIGHT')
 
-		screen.blit(show_title, (365, 25))
-		# screen.blit(show_score, (15, 25))
-		# screen.blit(show_next, (675, 25))
+		screen.blit(show_title, (650, 25))
+		screen.blit(show_next, (665, 150))
+		screen.blit(show_score, (650, 725))
+
 		pg.display.update()
 
 

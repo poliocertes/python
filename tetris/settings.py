@@ -1,3 +1,5 @@
+# settings file
+
 WINDOW_HEIGHT = 1000
 WINDOW_WIDTH = 900
 
