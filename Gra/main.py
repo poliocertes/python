@@ -1,5 +1,4 @@
 from tkinter import Label
-
 import pygame
 from random import randrange
 
