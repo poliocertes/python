@@ -1,3 +1,5 @@
+import pygame.image
+
 from settings import *
 from classes.gameboard import GameBoard
 from classes.block import Block
@@ -13,17 +15,19 @@ colors = ['red', 'blue', 'green', 'orange', 'black']
 blocks = []
 score = 0
 screen = pg.display.set_mode([WINDOW_WIDTH, WINDOW_HEIGHT])
+tetris_logo = pygame.image.load('assets/tetris.png').convert()
 pg.display.set_caption('Tetris')
 
 
 def main():
 	running = True
 	game_board = GameBoard()
+	block = Block()
 
 	while running:
-		screen.fill('blue')
+		screen.fill(BLUE)
 		game_board.draw_grid()
-		show_title = pg.font.Font.render(pg.font.SysFont('Arial', 50), 'TETRIS', True, (255, 255, 255))
+
 		show_score = pg.font.Font.render(pg.font.SysFont('Arial', 30), f'Score: {score}', True, (255, 255, 255))
 		show_next = pg.font.Font.render(pg.font.SysFont('Arial', 30), 'Next', True, (255, 255, 255))
 
@@ -45,9 +49,9 @@ def main():
 		if keys[pg.K_RIGHT]:
 			print('RIGHT')
 
-		screen.blit(show_title, (650, 25))
-		screen.blit(show_next, (665, 150))
-		screen.blit(show_score, (650, 725))
+		screen.blit(tetris_logo, (600, 50))
+		screen.blit(show_next, (665, 350))
+		screen.blit(show_score, (650, 700))
 
 		pg.display.update()
 
