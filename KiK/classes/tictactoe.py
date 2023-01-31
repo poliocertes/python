@@ -5,8 +5,8 @@ from classes.settings import *
 
 class Symbol:
 	def __init__(self):
-		self. first = FIRST_SYMBOL
-		self.second = SECOND_SYMBOL
+		self.image = pg.Surface([BLOCK_SIZE, BLOCK_SIZE])
+		self.symbols = []
 
 	def draw(self):
 		pass
@@ -15,12 +15,15 @@ class Symbol:
 class Tictactoe:
 	def __init__(self, game):
 		self.game = game
-		self.is_activ = True
+		self.field_is_activ = True
 
 	def draw_grid(self):
 		for i in range(COLS):
 			for j in range(ROWS):
-				pg.draw.rect(self.game.screen, 'black', (j * BLOCK_SIZE + 100, i * BLOCK_SIZE + 100, BLOCK_SIZE, BLOCK_SIZE), 1)
+				pg.draw.rect(self.game.screen, 'black', (j * BLOCK_SIZE + (HEIGHT/4), i * BLOCK_SIZE + (WIDTH/4), BLOCK_SIZE, BLOCK_SIZE), 1)
+
+	def update(self):
+		pass
 
 	def draw(self):
 		self.draw_grid()
