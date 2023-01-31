@@ -18,6 +18,10 @@ class Game:
 			if event.type == pg.QUIT:
 				pg.quit()
 				sys.exit()
+			if event.type == pg.MOUSEBUTTONDOWN:
+				mouse_pos = pg.mouse.get_pos()
+				if ((WIDTH/4 + BLOCK_SIZE), (HEIGHT/4 + BLOCK_SIZE)) > mouse_pos > (WIDTH/4, HEIGHT/4):
+					print('field_1')
 
 	def screen_update(self):
 		self.clock.tick(FPS)
