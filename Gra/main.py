@@ -1,4 +1,5 @@
-from tkinter import Label
+# brickbreaker by @Jacek
+
 import pygame
 from random import randrange
 
@@ -45,7 +46,7 @@ class Paddle(object):
 
 
 # gameball class
-class GameBall:
+class GameBall(object):
 
     def __init__(self, x, y):
         self.x_cord = x
