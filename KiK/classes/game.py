@@ -19,9 +19,9 @@ class Game:
 				pg.quit()
 				sys.exit()
 			if event.type == pg.MOUSEBUTTONDOWN:
-				current_mouse_pos = pg.mouse.get_pos()
-				if ((WIDTH/4 + BLOCK_SIZE), (HEIGHT/4 + BLOCK_SIZE)) > current_mouse_pos > (WIDTH/4, HEIGHT/4):
-					print('field_nr_1')
+				current_pos = pg.mouse.get_pos()
+				if current_pos < ((WIDTH/4), (HEIGHT/4)):
+					print('oko')
 
 	def screen_update(self):
 		self.clock.tick(FPS)

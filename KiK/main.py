@@ -1,4 +1,4 @@
-# main file KiK
+# main file
 
 from classes.game import Game
 
