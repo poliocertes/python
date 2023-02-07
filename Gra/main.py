@@ -34,7 +34,7 @@ class Paddle(object):
 
     def draw(self):
         self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
-        pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
+        pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height), border_radius=8)
 
     def move_left(self):
         if self.x_cord > 5:
@@ -60,7 +60,7 @@ class GameBall(object):
 
     def draw(self):
         self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
-        pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
+        pygame.draw.rect(screen, self.color, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height), border_radius=8)
 
     def move(self):
         self.x_cord += self.x_vel
@@ -84,8 +84,8 @@ class Brick(object):
 
     def draw(self, gameball):
         for color, block in enumerate(self.block_list):
-            pygame.draw.rect(screen, self.color_list[color], block)
-        for i in range(self.cols):
+            pygame.draw.rect(screen, self.color_list[color], block, border_radius=7)
+        for i in range(self.cols): 
             for j in range(self.rows):
                 for item in self.block_list:
                     if item.y + item.height >= gameball.y_cord and item.x + item.width > gameball.x_cord  > item.x:
