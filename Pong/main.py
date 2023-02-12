@@ -13,7 +13,7 @@ WHITE = (255, 255, 255)
 GREEN = (0, 153, 0)
 ORAGNE = (255, 140, 0)
 FPS = 120
-PADDLE_HEIGHT = 100
+PADDLE_HEIGHT = 150
 PADDLE_WIDTH = 20
 BALL_RADIUS = 5
 
@@ -36,7 +36,7 @@ class Paddle_one:
 		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
 	def draw(self):
-		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height))
+		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord, self.y_cord, self.width, self.height), border_radius=8)
 
 	def move_up(self):
 		if self.y_cord > 10:
@@ -58,7 +58,7 @@ class Paddle_two:
 		self.hitbox = pygame.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
 	def draw(self):
-		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord - self.width/2, self.y_cord, self.width, self.height))
+		pygame.draw.rect(screen, self.COLOR, pygame.Rect(self.x_cord - self.width/2, self.y_cord, self.width, self.height), border_radius=8)
 
 	def move_up(self):
 		if self.y_cord > 10:
