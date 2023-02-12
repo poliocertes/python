@@ -1,4 +1,5 @@
 # Pong by Jacek
+
 import pygame
 
 pygame.init()
@@ -11,7 +12,7 @@ GRAY = (150, 150, 150)
 YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 153, 0)
-ORAGNE = (255, 140, 0)
+ORANGE = (255, 140, 0)
 FPS = 120
 PADDLE_HEIGHT = 150
 PADDLE_WIDTH = 15
@@ -25,7 +26,7 @@ pygame.display.set_caption('PONG')
 pygame.display.flip()
 
 
-class Paddle_one:
+class PaddleOne:
 	COLOR = GREEN
 	PADDLE1_VEL = 6
 	def __init__(self, x, y, width, height):
@@ -47,9 +48,10 @@ class Paddle_one:
 			self.y_cord += self.PADDLE1_VEL
 
 
-class Paddle_two:
+class PaddleTwo:
 	COLOR = RED
 	PADDLE2_VEL = 6
+
 	def __init__(self, x, y, width, height):
 		self.x_cord = x
 		self.y_cord = y
@@ -69,9 +71,10 @@ class Paddle_two:
 			self.y_cord += self.PADDLE2_VEL
 
 
-class Game_ball:
+class GameBall:
 	COLOR = YELLOW
 	BALL_VEL = 5
+
 	def __init__(self, x, y, radius):
 		self.x_cord = self.start_x = x
 		self.y_cord = self.start_y = y
@@ -98,9 +101,9 @@ def main():
 	score1 = 0
 	score2 = 0
 
-	paddle_1 = Paddle_one(75, (HEIGHT // 2 - PADDLE_HEIGHT // 2), PADDLE_WIDTH, PADDLE_HEIGHT)
-	paddle_2 = Paddle_two(WIDTH - 75 - PADDLE_WIDTH, (HEIGHT // 2 - PADDLE_HEIGHT // 2), PADDLE_WIDTH, PADDLE_HEIGHT)
-	game_ball = Game_ball(WIDTH // 2, HEIGHT // 2, BALL_RADIUS)
+	paddle_1 = PaddleOne(75, (HEIGHT // 2 - PADDLE_HEIGHT // 2), PADDLE_WIDTH, PADDLE_HEIGHT)
+	paddle_2 = PaddleTwo(WIDTH - 75 - PADDLE_WIDTH, (HEIGHT // 2 - PADDLE_HEIGHT // 2), PADDLE_WIDTH, PADDLE_HEIGHT)
+	game_ball = GameBall(WIDTH // 2, HEIGHT // 2, BALL_RADIUS)
 	
 	if score1 or score2 >= 5:
 		game_ball.BALL_VEL += 1
