@@ -20,14 +20,14 @@ class Game:
 				sys.exit()
 			if event.type == pg.MOUSEBUTTONDOWN:
 				current_pos = pg.mouse.get_pos()
-				if current_pos < ((WIDTH/4), (HEIGHT/4)):
-					print('oko')
+				if current_pos[0] <= 180 and current_pos[1] <= 180:
+					print('UU')
 
 	def screen_update(self):
 		self.clock.tick(FPS)
 
 	def game(self):
-		self.screen.fill(color='brown')
+		self.screen.fill(color=BOARD_COLOR)
 		self.tictactoe.draw()
 		pg.display.update()
 
