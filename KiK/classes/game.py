@@ -18,7 +18,7 @@ class Game:
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
-            if event.type == pg.MOUSEBUTTONDOWN:
+            if event.type == pg.MOUSEBUTTONDOWN:  
                 current_pos = pg.mouse.get_pos()
                 if current_pos[0] <= 180 and current_pos[1] < 180:
                     print('Field nr 1')
@@ -32,7 +32,7 @@ class Game:
                     print('Field nr 5')
                 elif 330 > current_pos[0] > 255 > current_pos[1] > 180:
                     print('Field nr 6')
-                elif current_pos[0] < 180 and 255 < current_pos[1] < 330:  # from field 7
+                elif current_pos[0] < 180 and 255 < current_pos[1] < 330:
                     print('Field nr 7')
                 elif 180 < current_pos[0] < 255 and current_pos[1] < 330:
                     print('Field nr 8')
@@ -45,10 +45,11 @@ class Game:
     def game(self):
         self.screen.fill(color=BOARD_COLOR)
         self.tictactoe.draw()
+        self.check_events()
         pg.display.update()
 
     def run(self):
         while True:
-            self.check_events()
-            self.screen_update()
             self.game()
+            self.screen_update()
+            
