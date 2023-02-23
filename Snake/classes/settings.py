@@ -11,3 +11,4 @@ HEIGHT = 800
 ROWS = 80
 COLS = 120
 FPS = 60
+screen = pg.display.set_mode([WIDTH, HEIGHT])
