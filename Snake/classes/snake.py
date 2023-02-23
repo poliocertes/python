@@ -37,6 +37,17 @@ class Snake(object):
             self.y_vel = 2
             self.x_vel = 0
 
+    def check_collision(self):
+        if self.y_cord > 720:
+            self.y_cord = 0
+        elif self.y_cord < 0:
+            self.y_cord = 720
+
+        if self.x_cord > 1200:
+            self.x_cord = 0
+        elif self.x_cord < 0:
+            self.x_cord = 1200
+
     def run(self):
         self.y_cord += self.y_vel
         self.x_cord += self.x_vel

@@ -3,6 +3,7 @@
 import sys
 from classes.settings import *
 from classes.snake import Snake
+from classes.food import Food
 
 
 class Board(object):
@@ -10,6 +11,7 @@ class Board(object):
         pg.display.set_caption('SNAKE')
         self.clock = pg.time.Clock()
         self.snake = Snake()
+        self.food = Food()
 
     def check_events(self):
         for event in pg.event.get():
@@ -18,30 +20,29 @@ class Board(object):
                 sys.exit()
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_LEFT:
-                    print('lewo')
                     self.snake.move_left()
                 elif event.key == pg.K_RIGHT:
-                    print('prawo')
                     self.snake.move_right()
                 elif event.key == pg.K_UP:
-                    print('góra')
                     self.snake.move_up()
                 elif event.key == pg.K_DOWN:
-                    print('dół')
                     self.snake.move_down()
 
     def update(self):
         self.clock.tick(FPS)
         self.snake.run()
+        self.snake.check_collision()
 
-    def draw(self):
+    def draw_board(self):
         screen.fill(color=BG_COLOR)
+        self.food.draw_food()
         self.snake.draw()
+        pg.draw.rect(screen, 'black', pg.Rect(0, 750, 1200, 2))
         pg.display.flip()
 
     def run(self):
         while True:
-            self.draw()
+            self.draw_board()
             self.check_events()
             self.update()
 
