@@ -6,8 +6,8 @@ import random
 
 class Food(object):
     def __init__(self):
-        self.x_cord = random.randint(15, 730)
-        self.y_cord = random.randint(15, 1155)
+        self.x_cord = random.randint(15, 1150)
+        self.y_cord = random.randint(15, 710)
         self.width = 25
         self.height = 25
         self.foods = []

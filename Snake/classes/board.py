@@ -40,6 +40,9 @@ class Board(object):
         pg.draw.rect(screen, 'black', pg.Rect(0, 750, 1200, 2))
         pg.display.flip()
 
+    def draw_score(self):
+        pass
+
     def run(self):
         while True:
             self.draw_board()

@@ -11,6 +11,7 @@ class Snake(object):
         self.height = 25
         self.color = SN_HEAD_COLOR
         self.body_color = SN_TAIL_COLOR
+        self.snake_body = []
         self.y_vel = 2
         self.x_vel = 0
 
@@ -37,6 +38,7 @@ class Snake(object):
             self.y_vel = 2
             self.x_vel = 0
 
+# collision with no wall detection.
     def check_collision(self):
         if self.y_cord > 720:
             self.y_cord = 0
