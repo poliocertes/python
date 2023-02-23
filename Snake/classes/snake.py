@@ -11,23 +11,34 @@ class Snake(object):
         self.height = 25
         self.color = SN_HEAD_COLOR
         self.body_color = SN_TAIL_COLOR
-        self.vel = 2
+        self.y_vel = 2
+        self.x_vel = 0
 
     def draw(self):
-        pg.draw.rect(screen, self.color,(self.x_cord, self.y_cord, self.width, self.height), border_radius=8)
-
-    def run(self):
-        self.x_cord += self.vel
+        pg.draw.rect(screen, self.color,(self.x_cord, self.y_cord, self.width, self.height), border_radius=10)
 
     def move_left(self):
-        pass
+        if self.x_vel < 2:
+            self.y_vel = 0
+            self.x_vel = -2
 
     def move_right(self):
-        pass
+        if self.x_vel > -2:
+            self.y_vel = 0
+            self.x_vel = 2
 
     def move_up(self):
-        pass
+        if self.y_vel < 2:
+            self.y_vel = -2
+            self.x_vel = 0
 
     def move_down(self):
-        pass
+        if self.y_vel > -2:
+            self.y_vel = 2
+            self.x_vel = 0
+
+    def run(self):
+        self.y_cord += self.y_vel
+        self.x_cord += self.x_vel
+
 
