@@ -9,9 +9,10 @@ from classes.food import Food
 class Board(object):
     def __init__(self):
         pg.display.set_caption('SNAKE')
-        self.clock = pg.time.Clock()
+        self.clock = CLOCK
         self.snake = Snake()
         self.food = Food()
+        self.score = 0
 
     def check_events(self):
         for event in pg.event.get():
@@ -33,15 +34,20 @@ class Board(object):
         self.snake.run()
         self.snake.check_collision()
 
+    def show_score(self):
+        show_score = pg.font.Font.render(pg.font.SysFont('Arial Bold', 40), f'Score: {self.score}', True, (255, 255, 255))
+        screen.blit(show_score, (15, 760))
+
+    def draw_board_end(self):
+        pg.draw.rect(screen, 'black', pg.Rect(0, 750, 1200, 2))
+
     def draw_board(self):
         screen.fill(color=BG_COLOR)
         self.food.draw_food()
+        self.draw_board_end()
+        self.show_score()
         self.snake.draw()
-        pg.draw.rect(screen, 'black', pg.Rect(0, 750, 1200, 2))
         pg.display.flip()
-
-    def draw_score(self):
-        pass
 
     def run(self):
         while True:

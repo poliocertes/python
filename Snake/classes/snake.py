@@ -19,23 +19,23 @@ class Snake(object):
         pg.draw.rect(screen, self.color,(self.x_cord, self.y_cord, self.width, self.height), border_radius=10)
 
     def move_left(self):
-        if self.x_vel < 2:
+        if self.x_vel < SPEED:
             self.y_vel = 0
-            self.x_vel = -2
+            self.x_vel = -SPEED
 
     def move_right(self):
-        if self.x_vel > -2:
+        if self.x_vel > - SPEED:
             self.y_vel = 0
-            self.x_vel = 2
+            self.x_vel = SPEED
 
     def move_up(self):
-        if self.y_vel < 2:
-            self.y_vel = -2
+        if self.y_vel < SPEED:
+            self.y_vel = - SPEED
             self.x_vel = 0
 
     def move_down(self):
-        if self.y_vel > -2:
-            self.y_vel = 2
+        if self.y_vel > - SPEED:
+            self.y_vel = SPEED
             self.x_vel = 0
 
 # collision with no wall detection.
@@ -53,5 +53,3 @@ class Snake(object):
     def run(self):
         self.y_cord += self.y_vel
         self.x_cord += self.x_vel
-
-
