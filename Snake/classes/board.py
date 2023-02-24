@@ -14,6 +14,13 @@ class Board(object):
         self.food = Food()
         self.score = 22
 
+    def create_food(self):  #  creating food
+        if len(self.food.foods) < 3:
+            self.food.foods.append(self.food)
+            print(len(self.food.foods))
+        else:
+            pass
+
     def check_events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -47,6 +54,7 @@ class Board(object):
         self.food.draw_food()
         self.check_snake_food_col()
         self.show_score()
+        self.create_food()   #  creating food
         self.snake.draw()
         pg.display.flip()
 
