@@ -12,7 +12,7 @@ class Snake(object):
         self.color = SN_HEAD_COLOR
         self.body_color = SN_TAIL_COLOR
         self.snake_body = []
-        self.y_vel = 2
+        self.y_vel = SNAKE_SPEED
         self.x_vel = 0
 
     def draw(self):
@@ -49,7 +49,6 @@ class Snake(object):
             self.x_cord = 0
         elif self.x_cord < 0:
             self.x_cord = 1200
-
 
     def run(self):
         self.y_cord += self.y_vel

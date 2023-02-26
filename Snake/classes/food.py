@@ -14,6 +14,6 @@ class Food(object):
         self.food_color = FOOD_COLOR
         self.foods = []
 
-    def draw_food(self):
-        pg.draw.rect(screen, self.food_color, (self.x_cord, self.y_cord, self.width, self.height), border_radius=10)
+    def draw_food_item(self):
+        screen.blit(self.food_color,(self.x_cord, self.y_cord, self.width, self.height))
 

@@ -12,9 +12,9 @@ class Board(object):
         self.clock = CLOCK
         self.snake = Snake()
         self.food = Food()
-        self.score = 22
+        self.score = 0
 
-    def create_food(self):  #  creating food
+    def create_food(self):
         if len(self.food.foods) < 3:
             self.food.foods.append(self.food)
             print(len(self.food.foods))
@@ -42,20 +42,18 @@ class Board(object):
         self.snake.check_wall_collision()
 
     def show_score(self):
-        show_score = pg.font.Font.render(pg.font.SysFont('Arial Bold', 40), f'Score: {self.score}', True, (255, 255, 255))
+        show_score = pg.font.Font.render(pg.font.SysFont('Arial Bold', 40), f'Score: {self.score}', True, (0, 0, 0))
         screen.blit(show_score, (15, 760))
 
-    def check_snake_food_col(self):
-        if self.snake.x_cord == self.food.x_cord and self.snake.y_cord == self.food.y_cord:
-            print('T')
+    def draw_board_end(self):
+        pg.draw.rect(screen, 'black', pg.Rect(0, 740, 1200, 3))
 
     def draw_board(self):
         screen.fill(color=BG_COLOR)
-        self.food.draw_food()
-        self.check_snake_food_col()
         self.show_score()
-        self.create_food()   #  creating food
+        self.create_food()
         self.snake.draw()
+        self.draw_board_end()
         pg.display.flip()
 
     def run(self):
