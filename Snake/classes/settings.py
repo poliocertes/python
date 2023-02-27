@@ -3,7 +3,6 @@
 import pygame as pg
 
 
-
 BG_COLOR = '#006600'
 SN_HEAD_COLOR = '#CC6600'
 SN_TAIL_COLOR = '#0000CC'

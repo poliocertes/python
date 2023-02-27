@@ -14,13 +14,6 @@ class Board(object):
         self.food = Food()
         self.score = 0
 
-    def create_food(self):
-        if len(self.food.foods) < 3:
-            self.food.foods.append(self.food)
-            print(len(self.food.foods))
-        else:
-            pass
-
     def check_events(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -41,6 +34,12 @@ class Board(object):
         self.snake.run()
         self.snake.check_wall_collision()
 
+    def create_food(self):
+        if len(self.food.foods) >=3:
+            pass
+        else:
+            self.food.foods.append(self.food)
+
     def show_score(self):
         show_score = pg.font.Font.render(pg.font.SysFont('Arial Bold', 40), f'Score: {self.score}', True, (0, 0, 0))
         screen.blit(show_score, (15, 760))
@@ -51,7 +50,6 @@ class Board(object):
     def draw_board(self):
         screen.fill(color=BG_COLOR)
         self.show_score()
-        self.create_food()
         self.snake.draw()
         self.draw_board_end()
         pg.display.flip()
