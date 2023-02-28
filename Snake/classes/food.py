@@ -13,7 +13,19 @@ class Food(object):
         self.foods = []
         self.food_color = FOOD_COLOR
         self.foods = []
+        self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
+
+    def create_food(self):
+        if len(self.foods) >= 2:
+            pass
+        else:
+            self.foods.append(Food)
 
     def draw_food_item(self):
-        screen.blit(self.food_color,(self.x_cord, self.y_cord, self.width, self.height))
+        self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
+        for food in self.foods:
+            pg.draw.rect(screen, self.food_color,(self.x_cord, self.y_cord, self.width, self.height), border_radius=10)
+
+
+            
 

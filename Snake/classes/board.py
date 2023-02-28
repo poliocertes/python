@@ -27,31 +27,33 @@ class Board(object):
                 elif event.key == pg.K_UP:
                     self.snake.move_up()
                 elif event.key == pg.K_DOWN:
-                    self.snake.move_down()
+                    self.snake.move_down()  
 
     def update(self):
         self.clock.tick(FPS)
         self.snake.run()
         self.snake.check_wall_collision()
 
-    def create_food(self):
-        if len(self.food.foods) >=3:
-            pass
-        else:
+    def detect_collision(self):
+        if self.snake.hitbox.colliderect(self.food.hitbox):
             self.food.foods.append(self.food)
+
 
     def show_score(self):
         show_score = pg.font.Font.render(pg.font.SysFont('Arial Bold', 40), f'Score: {self.score}', True, (0, 0, 0))
         screen.blit(show_score, (15, 760))
 
-    def draw_board_end(self):
+    def draw_info_area(self):
         pg.draw.rect(screen, 'black', pg.Rect(0, 740, 1200, 3))
 
     def draw_board(self):
         screen.fill(color=BG_COLOR)
         self.show_score()
         self.snake.draw()
-        self.draw_board_end()
+        self.food.create_food()
+        self.food.draw_food_item()
+        self.detect_collision()
+        self.draw_info_area()
         pg.display.flip()
 
     def run(self):

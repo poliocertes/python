@@ -14,8 +14,10 @@ class Snake(object):
         self.snake_body = []
         self.y_vel = SNAKE_SPEED
         self.x_vel = 0
+        self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
     def draw(self):
+        self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
         pg.draw.rect(screen, self.color,(self.x_cord, self.y_cord, self.width, self.height), border_radius=10)
 
     def move_left(self):
@@ -38,7 +40,6 @@ class Snake(object):
             self.y_vel = SNAKE_SPEED
             self.x_vel = 0
 
-# collision with no wall detection.
     def check_wall_collision(self):
         if self.y_cord > 720:
             self.y_cord = 0
