@@ -2,12 +2,14 @@
 
 import os
 import time
+import sys
 import tkinter
 from tkinter import *
 from tkinter import filedialog, ttk
 
 import pygame
 from mutagen.mp3 import MP3
+from pygame import event, MOUSEBUTTONDOWN
 
 pygame.init()
 player = Tk()
@@ -234,6 +236,12 @@ def info():
     tkinter.messagebox.showinfo(title="About", message="MiMoZu Mp3 Player by Jacek")
 
 
+def mouse_click():
+    if event.type == MOUSEBUTTONDOWN:
+        if event.button == 1: # 1 == left button
+            print("click!")
+
+
 # another stuff
 player_menu = Menu(player, tearoff=False)
 fileMenu = Menu(player_menu, tearoff=0)
@@ -291,7 +299,6 @@ volume_slider.place(x=320, y=323)
 song_slider.place(x=10, y=280)
 song_time_label.place(x=20, y=215)
 song_slider_label.place(x=20, y=245)
-
 player.config(menu=player_menu)
 Playlist.pack()
 player.configure(bg=COLOR)
