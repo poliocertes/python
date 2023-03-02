@@ -5,6 +5,7 @@ import sys
 
 
 FPS = 60
+CLOCK = pg.time.Clock()
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 BG_COLOR = '#994C00'
