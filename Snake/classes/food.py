@@ -12,20 +12,17 @@ class Food(object):
         self.height = 25
         self.foods = []
         self.food_color = FOOD_COLOR
-        self.foods = []
         self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
 
     def create_food(self):
-        if len(self.foods) >= 2:
+        if len(self.foods) >= 3:
             pass
         else:
             self.foods.append(Food)
 
     def draw_food_item(self):
         self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
-        for food in self.foods:
-            pg.draw.rect(screen, self.food_color,(self.x_cord, self.y_cord, self.width, self.height), border_radius=10)
-
-
-            
+        for item in self.foods:
+            pg.draw.rect(screen, self.food_color,(self.x_cord, self.y_cord, self.width, self.height), border_radius = 10)
+                
 
