@@ -19,7 +19,7 @@ class Food(object):
             pass
         else:
             self.foods.append(Food)
-
+            
     def draw_food_item(self):
         self.hitbox = pg.Rect(self.x_cord, self.y_cord, self.width, self.height)
         for item in self.foods:
