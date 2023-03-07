@@ -1,4 +1,7 @@
 # main file
 
+from classes.board import Board
+
 if __name__ == '__main__':
-    print('SNAKE')
+    board = Board()
+    board.run()
