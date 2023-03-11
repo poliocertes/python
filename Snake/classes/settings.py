@@ -4,7 +4,7 @@ import pygame as pg
 
 WIDTH = 1200
 HEIGHT = 800
-SCREEN_BG = pg.image.load('assets/grass.jpg')
+# SCREEN_BG = pg.image.load('assets/grass.jpg')
 BG_COLOR = '#336600'
 FPS = 120
 SNAKE_COLOR = '#009900'

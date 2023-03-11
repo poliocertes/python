@@ -17,9 +17,7 @@ class Snake(object):
         self.x += self.x_vel
 
     def move_left(self):
-        if self.x_vel > 0:
-            self.x_vel = 0
-            self.y_vel = -1
+        pass
 
     def move_right(self):
         pass
