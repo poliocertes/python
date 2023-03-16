@@ -30,7 +30,8 @@ class Game(object):
 
     def check_item_collision(self):
         for food in self.food.food:
-            if self.snake.hitbox.colliderect(self.food.hitbox):
+            if self.food.hitbox.colliderect(self.snake.hitbox):
+                self.food.food.remove(food)
                 self.food.color = 'red'
 
     def draw_board_border(self):
@@ -38,8 +39,8 @@ class Game(object):
 
     def update(self):
         self.snake.check_wall_collision()
-        self.check_item_collision()
         self.food.create_food()
+        self.check_item_collision()
         self.clock.tick(FPS)
 
     def draw(self):
@@ -51,6 +52,6 @@ class Game(object):
 
     def run(self):
         while True:
-            self.update()
             self.check_events()
             self.draw()
+            self.update()

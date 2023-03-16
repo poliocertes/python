@@ -7,7 +7,7 @@ from classes.settings import *
 class Food(object):
     def __init__(self):
         self.x = rn.randint(15, WIDTH - 15)
-        self.y = rn.randint(15, HEIGHT - 15)
+        self.y = rn.randint(15, HEIGHT - 75)
         self.width = 25
         self.height = 25
         self.color = FOOD_COLOR
