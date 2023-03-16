@@ -1,8 +1,8 @@
 # main file
 
-from classes.board import Board
+from classes.game import Game
 
 if __name__ == '__main__':
-    board = Board()
-    board.run()
+    game = Game()
+    game.run()
 

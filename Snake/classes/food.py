@@ -1,23 +1,25 @@
 # food file
 
+import random as rn
 from classes.settings import *
 
 
 class Food(object):
     def __init__(self):
-        self.x = rn.randint(50, 1150)
-        self.y = rn.randint(50, 750)
-        self.width = 15
-        self.height = 15
-        self.foods = []
-        self.food_color = FOOD_COLOR
+        self.x = rn.randint(15, WIDTH - 15)
+        self.y = rn.randint(15, HEIGHT - 15)
+        self.width = 25
+        self.height = 25
+        self.color = FOOD_COLOR
+        self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
+        self.food = []
 
-    def add_food(self):
-        if len(self.foods) >= 3:
-            pass
-        else:
-            self.foods .append(Food)
+    def create_food(self):
+        food = pg.draw.rect(screen, self.color,(self.x, self.y, self.width, self.height))
+        if len(self.food) < 1:
+            self.food.append(food)
 
     def draw_food(self):
         self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
-        pg.draw.rect(screen, self.food_color,(self.x, self.y, self.width, self.height), border_radius=10)
+        for food in self.food:
+            pg.draw.rect(screen, self.color, food, border_radius=10)
