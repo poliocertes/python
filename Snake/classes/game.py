@@ -12,6 +12,7 @@ class Game(object):
         self.clock = pg.time.Clock()
         self.snake = Snake()
         self.food = Food()
+        self.score = 0
 
     def check_events(self):
         for event in pg.event.get():
@@ -29,13 +30,14 @@ class Game(object):
                     self.snake.move_down()
 
     def check_item_collision(self):
-        for food in self.food.food:
+        for item in self.food.food:
             if self.food.hitbox.colliderect(self.snake.hitbox):
-                self.food.food.remove(food)
+                self.food.food.remove(item)
                 self.food.color = 'red'
 
     def draw_board_border(self):
-        pg.draw.rect(screen, BOARD_BORDER_COLOR, (0, 750, 1200, 5))
+        end_line = pg.draw.rect(screen, BOARD_BORDER_COLOR, (0, 750, 1200, 5))
+        return end_line
 
     def update(self):
         self.snake.check_wall_collision()
@@ -45,8 +47,8 @@ class Game(object):
 
     def draw(self):
         screen.fill(color=BG_COLOR)
-        self.snake.draw_snake()
         self.food.draw_food()
+        self.snake.draw_snake()
         self.draw_board_border()
         pg.display.flip()
 
