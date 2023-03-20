@@ -13,7 +13,11 @@ class Food:
         self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
         self.food = []
 
-    def draw(self):
+    def create_food(self):
+        food = pg.Rect(self.x, self.y, self.width, self.height)
         self.food.append(food)
+
+    def draw(self):
+        self.create_food()
         for food in self.food:
             pg.draw.rect(screen, self.color, food, border_radius=15)

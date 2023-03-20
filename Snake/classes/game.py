@@ -31,12 +31,14 @@ class Game:
                     self.snake.move_down()
 
     def check_collision(self):
-        if self.snake.hitbox.colliderect(self.food.hitbox):
-            self.food.color = 'white'
-            print("That's it")
+        for food in self.food.food:
+            if self.snake.hitbox.colliderect(self.food.hitbox):
+                self.food.food.remove(food)
+                self.food.color = 'black'
 
     def update(self):
         self.clock.tick(FPS)
+        self.snake.check_wall_col()
 
     def draw(self):
         screen.fill(BG_COLOR)
@@ -47,6 +49,6 @@ class Game:
     def run(self):
         while True:
             self.check_events()
-            self.draw()
             self.check_collision()
+            self.draw()
             self.update()

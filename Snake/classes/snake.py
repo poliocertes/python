@@ -35,6 +35,16 @@ class Snake:
             self.y_vel = 3
             self.x_vel = 0
 
+    def check_wall_col(self):
+        if self.x > WIDTH:
+            self.x = 0
+        elif self.x < 0:
+            self.x = WIDTH
+        elif self.y > HEIGHT:
+            self.y = 0
+        elif self.y < 0:
+            self.y = HEIGHT
+
     def draw(self):
         self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
         pg.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height), border_radius=15)
