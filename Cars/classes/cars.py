@@ -22,6 +22,7 @@ class Cars:
     def update(self):
         pg.display.flip()
 
+
     def draw(self):
         screen.fill(BG_COLOR)
         self.player.draw()

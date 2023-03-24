@@ -58,10 +58,9 @@ second_board_map = [
 ] 
 
 
-
 class Map:
     def __init__(self):
-        self.board_map = second_board_map
+        self.board_map = board_map
         self.world_map = {}
         self.rows = len(self.board_map)
         self.cols = len(self.board_map[0])
