@@ -39,6 +39,7 @@ class Game:
     def update(self):
         self.clock.tick(FPS)
         self.snake.check_wall_col()
+        self.check_collision()
 
     def draw(self):
         screen.fill(BG_COLOR)
@@ -49,6 +50,5 @@ class Game:
     def run(self):
         while True:
             self.check_events()
-            self.check_collision()
             self.draw()
             self.update()
