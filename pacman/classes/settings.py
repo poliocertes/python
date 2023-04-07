@@ -2,7 +2,7 @@
 
 import pygame as pg
 
-WIDTH = 800
+WIDTH = 750
 HEIGHT = 1200
 RES = WIDTH, HEIGHT
 FPS = 0
