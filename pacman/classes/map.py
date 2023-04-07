@@ -7,9 +7,9 @@ x = False
 first_map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, x, x, x, x, x, x, x, x, x, x, x, x, x, 1],
-    [1, x, 1, 1, 1, 1, 1, x, 1, 1, 1, 1, 1, x, 1],
+    [1, x, 1, 1, 1, x, 1, x, 1, x, 1, 1, 1, x, 1],
     [1, x, 1, x, x, x, x, x, x, x, x, x, 1, x, 1],
-    [1, x, 1, x, 1, 1, 1, x, 1, 1, 1, x, 1, x, 1],
+    [1, x, 1, x, 1, x, 1, x, 1, x, 1, x, 1, x, 1],
     [1, x, 1, x, 1, x, x, x, x, x, 1, x, 1, x, 1],
     [1, x, 1, x, 1, x, 1, 1, 1, x, 1, x, 1, x, 1],
     [1, x, 1, x, 1, x, 1, 2, 1, x, 1, x, 1, x, 1],
@@ -24,9 +24,9 @@ first_map = [
     [1, x, 1, x, 1, x, 1, 2, 1, x, 1, x, 1, x, 1],
     [1, x, 1, x, 1, x, 1, 1, 1, x, 1, x, 1, x, 1],
     [1, x, 1, x, 1, x, x, x, x, x, 1, x, 1, x, 1],
-    [1, x, 1, x, 1, 1, 1, x, 1, 1, 1, x, 1, x, 1],
+    [1, x, 1, x, 1, x, 1, x, 1, x, 1, x, 1, x, 1],
     [1, x, 1, x, x, x, x, 3, x, x, x, x, 1, x, 1],
-    [1, x, 1, 1, 1, 1, 1, x, 1, 1, 1, 1, 1, x, 1],
+    [1, x, 1, 1, 1, x, 1, x, 1, x, 1, 1, 1, x, 1],
     [1, x, x, x, x, x, x, x, x, x, x, x, x, x, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ] 
@@ -38,7 +38,6 @@ class Map:
         self.game_map = []
         self.rows = len(self.board_map)
         self.cols = len(self.board_map[0])
-        self.red_ghost_image = pg.image.load('assets/ghost_red.png')
         self.draw_map()
 
     def draw_map(self):

@@ -6,16 +6,18 @@ from classes.settings import *
 class Player:
     def __init__(self, game):
         self.x = WIDTH/2 - 12
-        self.y = BLOCK_SIZE + 25
+        self.y = BLOCK_SIZE + 10
         self.game = game
         self.color = PLAYER_COLOR
         self.map = map
-        self.player_image = pg.image.load('assets/pacman/pacman01.png')
+        self.player_image = PLAYER
         self.left_side_image = pg.transform.flip(self.player_image, True, False)
         self.right_side_image = self.player_image
         self.up_side_image = pg.transform.rotate(self.player_image, 90)
         self.down_side_image = pg.transform.rotate(self.player_image, -90)
         self.width = self.player_image.get_width()
+        self.height = self.player_image.get_height()
+        self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
 
     def move(self):
         x_vel = 1
@@ -43,6 +45,7 @@ class Player:
         # # < -- to napisał Michał Jabłoński :)
 
     def draw(self):
+        self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
         screen.blit(self.player_image, (self.x, self.y))
 
 
