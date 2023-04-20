@@ -11,6 +11,7 @@ class Game:
         self.clock = pg.time.Clock()
         self.snake = Snake()
         self.food = Food()
+        self.counter = 0
 
     def check_events(self):
         for event in pg.event.get():
@@ -34,7 +35,15 @@ class Game:
         for food in self.food.food:
             if self.snake.hitbox.colliderect(self.food.hitbox):
                 self.food.food.remove(food)
-                self.food.color = 'black'
+
+                print('TAK')
+                self.counter +=1
+                if self.counter%2==0:
+                    self.food.color = 'black'
+                    break
+                else:
+                    self.food.color = 'white'
+                    break
 
     def update(self):
         self.clock.tick(FPS)

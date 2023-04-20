@@ -20,4 +20,4 @@ class Food:
     def draw(self):
         self.create_food()
         for food in self.food:
-            pg.draw.rect(screen, self.color, food, border_radius=15)
+            pg.draw.rect(screen, self.color, food, border_radius=25)

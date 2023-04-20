@@ -45,6 +45,9 @@ class Snake:
         elif self.y < 0:
             self.y = HEIGHT
 
+    def create_snake(self):
+        pass
+
     def draw(self):
         self.hitbox = pg.Rect(self.x, self.y, self.width, self.height)
         pg.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height), border_radius=15)
