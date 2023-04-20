@@ -1,6 +1,7 @@
 # -- settings file --
 
 import pygame as pg
+import sys
 
 WIDTH = 750
 HEIGHT = 1200
@@ -20,7 +21,7 @@ blue_ghost_image = pg.image.load('assets/ghost_blue.png')
 green_ghost_image = pg.image.load('assets/ghost_green.png')
 player_image = pg.image.load('assets/pacman/pacman01.png')
 
-icon_size = (48, 48)
+icon_size = (50, 50)
 
 RED_GHOST = pg.transform.scale(red_ghost_image, icon_size)
 BLUE_GHOST = pg.transform.scale(blue_ghost_image, icon_size)

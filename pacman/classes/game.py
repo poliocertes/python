@@ -17,7 +17,7 @@ class Game:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
-                exit()
+                sys.exit()
 
     def update(self):
         self.player.move()

@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5b9c19a-f4ab-4d68-9735-35e64438986a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/items.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Snake/classes/food.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Snake/classes/food.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Snake/classes/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Snake/classes/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Snake/classes/snake.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Snake/classes/snake.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Snake/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Snake/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/items.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/items.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/settings.py" afterDir="false" />
@@ -47,6 +51,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jacek\Python\python\pacman\classes" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pacman" />
