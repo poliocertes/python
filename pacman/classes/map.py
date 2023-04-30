@@ -32,30 +32,8 @@ first_map = [
 ] 
 
 
-class Wall:
-    def __init__(self):
-        pass
-
-
-class Ghost:
-    def __init__(self):
-        pass
-
-
-class Food:
-    def __init__(self):
-        self.radius = 7
-        self.color = RED
-
-    def draw(self):
-        pass
-
-
 class Map:
     def __init__(self):
-        self.wall = Wall
-        self.ghost = Ghost
-        self.food = Food
         self.board_map = first_map
         self.game_map = []
         self.rows = len(self.board_map)
